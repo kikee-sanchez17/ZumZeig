@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ZumZeig</string>
-    <string name="name">NAME</string>
-    <string name="lastName">LAST NAME</string>
-    <string name="email">EMAIL</string>
-    <string name="password">PASSWORD</string>
-    <string name="repeatPassword">REPEAT PASSWORD</string>
+    <string name="name">Name</string>
+    <string name="lastName">Last name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repeatPassword">Repeat password</string>
     <string name="signUp">SIGN UP</string>
     <string name="login">LOGIN</string>
     <string name="error_title">ERROR</string>

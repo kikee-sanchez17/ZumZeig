@@ -1,9 +1,41 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.ZumZeig" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+<!-- res/values/themes.xml -->
+<resources>
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight">
+        <!-- Configuración general del tema -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="imageSrc">@drawable/zumzeig_black</item>
+    </style>
+    <!-- Estilo del botón para tema claro -->
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@color/black</item> <!-- Color de fondo -->
+        <item name="android:textColor">@color/white</item> <!-- Color del texto -->
+        <item name="android:padding">10dp</item> <!-- Relleno -->
+        <item name="android:textSize">18sp</item> <!-- Tamaño del texto -->
+        <item name="android:layout_margin">8dp</item> <!-- Margen -->
+    </style>
+    <!--<style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edittext_background_light</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+    </style>-->
+    <style name="EditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">1dp</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="android:textCursorDrawable">@color/black</item>
     </style>
 
-    <style name="Theme.ZumZeig" parent="Base.Theme.ZumZeig" />
+    <style name="Title1Style" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/black</item> <!-- Color del texto -->
+        <item name="android:background">@color/transparent</item> <!-- Color de fondo -->
+        <item name="android:padding">10dp</item> <!-- Relleno -->
+        <item name="android:textSize">50sp</item> <!-- Tamaño del texto -->
+        <item name="android:layout_margin">8dp</item> <!-- Margen -->
+    </style>
 </resources>
