@@ -96,6 +96,8 @@ class NewPassword : AppCompatActivity() {
         }
 
     }
+    //hola
+
     fun showAlert(context: Context) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(context.getString(R.string.error_title))

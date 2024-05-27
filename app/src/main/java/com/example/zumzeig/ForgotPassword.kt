@@ -52,7 +52,7 @@ class ForgotPassword : AppCompatActivity() {
                         Log.d("Response", response)
                         val lastWord = response.substringAfterLast(" ")
                         Toast.makeText(this,lastWord,Toast.LENGTH_LONG).show()
-
+//hola
                         try {
                             if (response.contains("success.EmailSENT"))  {
                                 // Iniciar la siguiente actividad

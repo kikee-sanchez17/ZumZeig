@@ -61,6 +61,8 @@ class SignUp : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        //hola
+
         loginBtn.setOnClickListener {
             var name: String = nameEt.getText().toString()
             var email: String = emailEt.getText().toString()
