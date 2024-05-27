@@ -5,87 +5,260 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.MyApp"
     tools:context=".SignUp">
 
-    <EditText
-        android:id="@+id/name"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/izquierda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/derecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90178573" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logoTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.08124373" />
+
+    <!-- Logo-->
+    <ImageView
+        android:id="@+id/imageSrc"
+        android:layout_width="339dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/logoBottom"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toTopOf="@+id/logoTop"
+        app:srcCompat="?attr/imageSrc" />
+    <!-- end logo-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/logoBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/textTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22668004" />
+
+    <!-- New accound-->
+    <TextView
+        android:id="@+id/textSignUp"
+        style="@style/Title1Style"
+        android:layout_width="372dp"
+        android:layout_height="99dp"
+        android:text="@string/newAccount"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/textBottom"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toTopOf="@+id/textTop" />
+    <!-- end New accound-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/textBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3119358" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/nameTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <!-- Name-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:hint="@string/name"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@id/lastName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintBottom_toTopOf="@+id/lastNameTop"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/nameTop">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- end name-->
 
-    <EditText
-        android:id="@+id/lastName"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/lastNameTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.43" />
+
+    <!-- Last name-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:hint="@string/lastName"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@id/email"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintBottom_toTopOf="@+id/emailTop"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/lastNameTop">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- end Last name-->
 
-    <EditText
-        android:id="@+id/email"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/emailTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.51" />
+
+    <!-- Email-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:hint="@string/email"
-        app:layout_constraintBottom_toTopOf="@id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lastName"
-        app:layout_constraintVertical_bias="0.402" />
+        app:layout_constraintBottom_toTopOf="@+id/passwordTop"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/emailTop">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- end Email-->
 
-    <EditText
-        android:id="@+id/password"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/passwordTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <!-- Password-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:hint="@string/password"
-        app:layout_constraintBottom_toTopOf="@id/repeatPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintBottom_toTopOf="@+id/repeatPasswordTop"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/passwordTop">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- end Password-->
 
-    <EditText
-        android:id="@+id/repeatPassword"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/repeatPasswordTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <!--Repeat password-->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextStyle"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="textPassword"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
         android:hint="@string/repeatPassword"
-        app:layout_constraintBottom_toTopOf="@id/login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password"
-        app:layout_constraintVertical_bias="0.522" />
+        app:layout_constraintBottom_toTopOf="@+id/registerTop"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/repeatPasswordTop">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/repeatPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <!--end Repeat password-->
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/registerTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <!-- Button Sign Up-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/register"
+        style="@style/ButtonStyle"
+        android:layout_width="360dp"
+        android:layout_height="61dp"
         android:text="@string/signUp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/repeatPassword"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintBottom_toTopOf="@+id/loginAccess"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/registerTop" />
+    <!-- end Button Sign Up-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/accesTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <!-- Already registed? Login-->
+    <TextView
+        android:id="@+id/loginAccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already Registered? Login"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/accesBottom"
+        app:layout_constraintEnd_toStartOf="@+id/derecha"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="@+id/izquierda"
+        app:layout_constraintTop_toBottomOf="@+id/accesTop"
+        app:layout_constraintVertical_bias="0.38" />
+    <!-- end Already registed? Login-->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/accesBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
