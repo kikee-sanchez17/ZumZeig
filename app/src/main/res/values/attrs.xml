@@ -2,4 +2,5 @@
 <!-- res/values/attrs.xml -->
 <resources>
     <attr name="imageSrc" format="reference" />
+
 </resources>

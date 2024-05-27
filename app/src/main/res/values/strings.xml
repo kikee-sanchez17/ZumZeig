@@ -13,6 +13,10 @@
     <string name="accept_button">Accept</string>
     <string name="invalid_email">Email is not valid</string>
     <string name="short_password">Password must contain at least 6 characters</string>
-
+    <string name="newAccount">NEW ACCOUNT</string>
+    <string name="loginText">LOGIN</string>
+    <string name="textContinue">Sign in to continue</string>
+    <string name="textNoAccount">Do not have an account yet? Sign up</string>
+    <string name="loginForgotPassword">Forgot Password?</string>
 
 </resources>

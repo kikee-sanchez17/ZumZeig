@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="textBottom" type="id" />
+    <item name="nameTop" type="id" />
+    <item name="name" type="id" />
+    <item name="lastNameTop" type="id" />
+    <item name="emailTop" type="id" />
+    <item name="lastName" type="id" />
+    <item name="logoTop" type="id" />
+    <item name="imageView2" type="id" />
+    <item name="logoBottom" type="id" />
+    <item name="textTop" type="id" />
+    <item name="textSignUp" type="id" />
+    <item name="loginBtn" type="id" />
+    <item name="login" type="id" />
+</resources>
