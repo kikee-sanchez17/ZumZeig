@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/values/attrs.xml -->
 <resources>
-    <attr name="imageSrc" format="reference" />
-
+    <attr name="imageSrc" format="reference" /><!--IMG logo zumzeig White and Black-->
+    <attr name="homeSrc" format="reference" /><!--IMG icon home White and Black-->
+    <attr name="calendarSrc" format="reference" /><!--IMG icon calendar White and Black-->
+    <attr name="savedSrc" format="reference" /><!--IMG icon saved White and Black-->
+    <attr name="userSrc" format="reference" /><!--IMG icon user White and Black-->
 </resources>
