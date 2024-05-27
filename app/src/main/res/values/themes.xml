@@ -42,4 +42,12 @@
         <item name="android:textSize">50sp</item> <!-- Tamaño del texto -->
         <item name="android:layout_margin">8dp</item> <!-- Margen -->
     </style>
+    <style name="subtitleStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/black</item> <!-- Color del texto -->
+        <item name="android:background">@color/transparent</item> <!-- Color de fondo -->
+        <item name="android:textSize">15sp</item> <!-- Tamaño del texto -->
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 </resources>

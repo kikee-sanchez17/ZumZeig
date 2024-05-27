@@ -18,5 +18,10 @@
     <string name="textContinue">Sign in to continue</string>
     <string name="textNoAccount">Do not have an account yet? Sign up</string>
     <string name="loginForgotPassword">Forgot Password?</string>
-    <string name="fpText">FORGOT YOUR PASSWORD</string>
+    <string name="fpText">CHANGE PASSWORD</string>
+    <string name="send">SEND</string>
+    <string name="fpTextsubtitle">Enter your email address to receive a code to reset your password</string>
+    <string name="fp2Text">RESET YOUR PASSWORD</string>
+    <string name="fp2Textsubtitle">Here you can set a new password for your Zumzeig account</string>
+    <string name="code">Code</string>
 </resources>
