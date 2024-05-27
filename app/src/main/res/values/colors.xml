@@ -3,9 +3,9 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="blueZumzeig">#007bff</color>
-    <color name="redZumzeig">#ef5554</color>
-    <color name="yellowZumzeig">#ffd65a</color>
-    <color name="purpleZumzeig">#856fe0</color>
-    <color name="turquoiseZumzeig">#51C1A7</color>
+    <color name="blueZumzeig">#007bff</color><!--Estrenes-->
+    <color name="redZumzeig">#ef5554</color><!--Paral·leles-->
+    <color name="yellowZumzeig">#ffd65a</color><!--Infantil-->
+    <color name="purpleZumzeig">#856fe0</color><!--Experimental-->
+    <color name="turquoiseZumzeig">#51C1A7</color><!--Festivals i cicles-->
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:icon="?attr/homeSrc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="home" />
+    <item
+        android:id="@+id/navCalendar"
+        android:icon="?attr/calendarSrc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="calendar" />
+    <item
+        android:id="@+id/navSaved"
+        android:icon="?attr/savedSrc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="saved" />
+    <item
+        android:id="@+id/navUser"
+        android:icon="?attr/userSrc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="user" />
+</menu>

@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ZumZeig</string>
+    <!-- Sign Up -->
+    <string name="newAccount">NEW ACCOUNT</string>
     <string name="name">Name</string>
     <string name="lastName">Last name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="repeatPassword">Repeat password</string>
     <string name="signUp">SIGN UP</string>
+    <string name="alreadySignUp">Already Sign up? Login</string>
+    <!-- end Sign Up -->
+
+    <!-- Login -->
+    <string name="loginText">LOGIN</string>
+    <string name="textContinue">Sign in to continue</string>
+    <string name="textNoAccount">Do not have an account yet? Sign up</string>
+    <string name="loginForgotPassword">Forgot Password?</string>
     <string name="login">LOGIN</string>
+    <!-- end Login -->
+
+    <!-- Enric -->
     <string name="error_title">ERROR</string>
     <string name="error_message">Passwords do not match</string>
     <string name="accept_button">Accept</string>
     <string name="invalid_email">Email is not valid</string>
     <string name="short_password">Password must contain at least 6 characters</string>
-    <string name="newAccount">NEW ACCOUNT</string>
-    <string name="loginText">LOGIN</string>
-    <string name="textContinue">Sign in to continue</string>
-    <string name="textNoAccount">Do not have an account yet? Sign up</string>
-    <string name="loginForgotPassword">Forgot Password?</string>
+    <!-- end Enric -->
+
+    <!-- Forgot password -->
     <string name="fpText">CHANGE PASSWORD</string>
-    <string name="send">SEND</string>
     <string name="fpTextsubtitle">Enter your email address to receive a code to reset your password</string>
+    <string name="send">SEND</string>
+    <!-- end Forgot password -->
+
+    <!-- New password -->
     <string name="fp2Text">RESET YOUR PASSWORD</string>
     <string name="fp2Textsubtitle">Here you can set a new password for your Zumzeig account</string>
     <string name="code">Code</string>
+    <!-- end New password -->
+
+    <!-- Fragments-->
+    <string name="home_fragment">Home fragment</string>
+    <string name="calendar_fragment">Calendar fragment</string>
+    <string name="saved_fragment">Saved fragment</string>
+    <string name="user_fragment">User fragment</string>
+    <!-- end Fragments-->
 </resources>
