@@ -3,6 +3,7 @@ package com.example.zumzeig
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
@@ -48,15 +49,18 @@ class ForgotPassword : AppCompatActivity() {
                 val stringRequest = MyStringRequest(
                     Request.Method.POST, url, params,
                     Response.Listener<String> { response ->
+                        Log.d("Response", response)
+                        val lastWord = response.substringAfterLast(" ")
+                        Toast.makeText(this,lastWord,Toast.LENGTH_LONG).show()
+
                         try {
-                            if (response == "success") {
+                            if (response.contains("success.EmailSENT"))  {
                                 // Iniciar la siguiente actividad
                                 val intent = Intent(this, NewPassword::class.java)
                                 intent.putExtra("email",email)
                                 startActivity(intent)
                                 finish()
                             }else{
-                                Toast.makeText(this,response,Toast.LENGTH_LONG).show()
                             }
                         } catch (e: JSONException) {
                             e.printStackTrace()

@@ -19,7 +19,8 @@ import network.MyStringRequest
 import org.json.JSONException
 
 class NewPassword : AppCompatActivity() {
-    private  var email: String= intent.getStringExtra("email").toString()
+    private var EMAIL: String =""
+
     private lateinit var otpET: EditText
     private lateinit var passwordET: EditText
     private lateinit var repeatpasswordET: EditText
@@ -35,6 +36,8 @@ class NewPassword : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var intent:Bundle? = getIntent().extras
+        EMAIL=intent?.get("email").toString()
         otpET=findViewById(R.id.code)
         passwordET=findViewById(R.id.password)
         repeatpasswordET=findViewById(R.id.repeatPassword)
@@ -53,7 +56,7 @@ class NewPassword : AppCompatActivity() {
                 return@setOnClickListener
             }
             val params = mapOf(
-                "email" to email,
+                "email" to EMAIL,
                 "otp" to otp,
                 "new-password" to password
             )
