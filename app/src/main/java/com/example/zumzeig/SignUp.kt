@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -23,6 +24,7 @@ class SignUp : AppCompatActivity() {
     private lateinit var emailEt: EditText
     private lateinit var nameEt: EditText
     private lateinit var lastnameEt: EditText
+    private lateinit var loginaccesEt: TextView
     private lateinit var passwordEt: EditText
     private lateinit var repeatpasswordEt: EditText
     private lateinit var queue: RequestQueue
@@ -39,6 +41,7 @@ class SignUp : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        loginaccesEt=findViewById(R.id.loginAccess)
         sharedPreferences=getSharedPreferences("UserInfo", MODE_PRIVATE)
         queue = Volley.newRequestQueue(this)
         emailEt = findViewById(R.id.email)
@@ -53,6 +56,13 @@ class SignUp : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        loginaccesEt.setOnClickListener {
+            val intent= Intent(this, login::class.java)
+            startActivity(intent)
+            finish()
+        }
+        //hola
+
         loginBtn.setOnClickListener {
             var name: String = nameEt.getText().toString()
             var email: String = emailEt.getText().toString()
@@ -86,44 +96,44 @@ class SignUp : AppCompatActivity() {
             "password" to password
         )
         val stringRequest = MyStringRequest(
-        Request.Method.POST,url,params,
-        Response.Listener<String> { response ->
-            // Manejar la respuesta exitosa
-            if (response == "Email already exists") {
-                // Mostrar un AlertDialog si el correo ya existe
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error")
-                builder.setMessage("Email already exists")
-                builder.setPositiveButton("Accept", null)
-                val dialog = builder.create()
-                dialog.show()
-            }else{
-                Toast.makeText(this, "User created", Toast.LENGTH_LONG).show()
-                val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                editor.putString("logged","true")
-                editor.putString("name",name)
-                editor.putString("email ",email)
+            Request.Method.POST,url,params,
+            Response.Listener<String> { response ->
+                // Manejar la respuesta exitosa
+                if (response == "Email already exists") {
+                    // Mostrar un AlertDialog si el correo ya existe
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Error")
+                    builder.setMessage("Email already exists")
+                    builder.setPositiveButton("Accept", null)
+                    val dialog = builder.create()
+                    dialog.show()
+                }else{
+                    Toast.makeText(this, "User created", Toast.LENGTH_LONG).show()
+                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                    editor.putString("logged","true")
+                    editor.putString("name",name)
+                    editor.putString("email ",email)
 
-                editor.apply()
-                val intent= Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+                    editor.apply()
+                    val intent= Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+
+                }
+
+            },
+            Response.ErrorListener { error ->
+                // Manejar el error
+                Toast.makeText(this, "User not created", Toast.LENGTH_LONG).show()
+                Log.e("SignUp", "Error: ${error.message}")
+
 
             }
-
-        },
-        Response.ErrorListener { error ->
-            // Manejar el error
-            Toast.makeText(this, "User not created", Toast.LENGTH_LONG).show()
-            Log.e("SignUp", "Error: ${error.message}")
-
-
-        }
-    )
+        )
         queue.add(stringRequest)
     }
 
-        fun passwordValidate(context: Context, pass1: String, pass2: String): Boolean {
+    fun passwordValidate(context: Context, pass1: String, pass2: String): Boolean {
         return if (pass1 == pass2) {
             true // Passwords match
         } else {
