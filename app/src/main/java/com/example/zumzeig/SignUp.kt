@@ -3,6 +3,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
@@ -27,7 +28,7 @@ class SignUp : AppCompatActivity() {
     private lateinit var queue: RequestQueue
     private lateinit var loginBtn: Button
     private lateinit var sharedPreferences: SharedPreferences
-    private var url: String="http://192.168.56.1/zumzeig/save.php"
+    private var url: String="https://enricsanchezmontoya.cat/zumzeig/save.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,7 @@ class SignUp : AppCompatActivity() {
         lastnameEt = findViewById(R.id.lastName)
         passwordEt = findViewById(R.id.password)
         repeatpasswordEt = findViewById(R.id.repeatPassword)
-        loginBtn = findViewById(R.id.loginBtn)
+        loginBtn = findViewById(R.id.register)
 
         if(sharedPreferences.getString("logged","false").equals("true")){
             val intent= Intent(this, MainActivity::class.java)
@@ -114,6 +115,8 @@ class SignUp : AppCompatActivity() {
         Response.ErrorListener { error ->
             // Manejar el error
             Toast.makeText(this, "User not created", Toast.LENGTH_LONG).show()
+            Log.e("SignUp", "Error: ${error.message}")
+
 
         }
     )
