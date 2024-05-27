@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +22,8 @@ import org.json.JSONObject
 class login : AppCompatActivity() {
     private lateinit var emailEt: EditText
     private lateinit var passwordEt: EditText
+    private lateinit var forgotpasswordEt: TextView
+    private lateinit var noaccountEt: TextView
     private lateinit var loginBtn: Button
     private var url: String = "https://enricsanchezmontoya.cat/zumzeig/login.php"
     private lateinit var queue: RequestQueue
@@ -35,12 +38,24 @@ class login : AppCompatActivity() {
             insets
         }
         emailEt = findViewById(R.id.email)
+        noaccountEt = findViewById(R.id.textNoAccount)
+        forgotpasswordEt = findViewById(R.id.loginForgotPassword)
         passwordEt = findViewById(R.id.password)
         loginBtn = findViewById(R.id.login)
         sharedPreferences = getSharedPreferences("UserInfo", MODE_PRIVATE)
         queue = Volley.newRequestQueue(this)
         if(sharedPreferences.getString("logged","false").equals("true")){
             val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        forgotpasswordEt.setOnClickListener{
+            val intent = Intent(this, ForgotPassword::class.java)
+            startActivity(intent)
+            finish()
+        }
+        noaccountEt.setOnClickListener{
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
             finish()
         }

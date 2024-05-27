@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -23,6 +24,7 @@ class SignUp : AppCompatActivity() {
     private lateinit var emailEt: EditText
     private lateinit var nameEt: EditText
     private lateinit var lastnameEt: EditText
+    private lateinit var loginaccesEt: TextView
     private lateinit var passwordEt: EditText
     private lateinit var repeatpasswordEt: EditText
     private lateinit var queue: RequestQueue
@@ -39,6 +41,7 @@ class SignUp : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        loginaccesEt=findViewById(R.id.loginAccess)
         sharedPreferences=getSharedPreferences("UserInfo", MODE_PRIVATE)
         queue = Volley.newRequestQueue(this)
         emailEt = findViewById(R.id.email)
@@ -50,6 +53,11 @@ class SignUp : AppCompatActivity() {
 
         if(sharedPreferences.getString("logged","false").equals("true")){
             val intent= Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        loginaccesEt.setOnClickListener {
+            val intent= Intent(this, login::class.java)
             startActivity(intent)
             finish()
         }
