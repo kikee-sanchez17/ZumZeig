@@ -209,10 +209,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.7572718" />
-
     <!-- Forgot password -->
-    <!-- end Forgot password -->
-
     <TextView
         android:id="@+id/loginForgotPassword"
         android:layout_width="wrap_content"
@@ -225,6 +222,7 @@
         app:layout_constraintStart_toStartOf="@+id/loginIzquierda"
         app:layout_constraintTop_toTopOf="@+id/loginForgotTop"
         app:layout_constraintVertical_bias="0.0" />
+    <!-- end Forgot password -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/loginForgotBottom"
@@ -232,9 +230,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.8" />
-    <!-- do not have accound yet? -->
-    <!-- end do not have accound yet? -->
 
+    <!-- do not have accound yet? -->
     <TextView
         android:id="@+id/textNoAccount"
         android:layout_width="wrap_content"
@@ -246,6 +243,7 @@
         app:layout_constraintStart_toStartOf="@+id/loginIzquierda"
         app:layout_constraintTop_toTopOf="@+id/loginForgotBottom"
         app:layout_constraintVertical_bias="0.0" />
+    <!-- end do not have accound yet? -->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/loginNoAccountBottom"
