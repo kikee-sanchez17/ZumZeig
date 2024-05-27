@@ -55,7 +55,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.28" />
 
-    <!-- Login-->
+    <!-- Login buu-->
     <TextView
         android:id="@+id/textLogin"
         style="@style/Title1Style"

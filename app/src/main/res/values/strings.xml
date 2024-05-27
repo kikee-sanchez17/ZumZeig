@@ -18,5 +18,5 @@
     <string name="textContinue">Sign in to continue</string>
     <string name="textNoAccount">Do not have an account yet? Sign up</string>
     <string name="loginForgotPassword">Forgot Password?</string>
-
+    <string name="fpText">FORGOT YOUR PASSWORD</string>
 </resources>
