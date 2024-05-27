@@ -22,7 +22,7 @@ class login : AppCompatActivity() {
     private lateinit var emailEt: EditText
     private lateinit var passwordEt: EditText
     private lateinit var loginBtn: Button
-    private var url: String = "http://192.168.56.1/zumzeig/login.php"
+    private var url: String = "https://enricsanchezmontoya.cat/zumzeig/login.php"
     private lateinit var queue: RequestQueue
     private lateinit var sharedPreferences: SharedPreferences
 
