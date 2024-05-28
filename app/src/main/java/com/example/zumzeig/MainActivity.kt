@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item: MenuItem ->
             val itemId = item.itemId
             when (itemId) {
+
                 R.id.navHome -> loadFragment(HomeFragment(), false)
                 R.id.navCalendar -> loadFragment(CalendarFragment(), false)
                 R.id.navSaved -> loadFragment(SavedFragment(), false)

@@ -1,8 +1,10 @@
 package adapter
 
+import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.zumzeig.R
@@ -17,13 +19,14 @@ class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val fecha: TextView = view.findViewById(R.id.eventFecha)
     val hora: TextView = view.findViewById(R.id.eventHora)
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun render(eventModel: Event) {
-        Glide.with(itemView.context).load(eventModel.urlImage).into(imgEvent)
-        titleEvent.text = eventModel.titleEvent
-        tipusEvent.text = eventModel.tipoEvento
-        sinopsis.text = eventModel.sinopsis
+        Glide.with(itemView.context).load(eventModel.getaImages()).into(imgEvent)
+        titleEvent.text = eventModel.title
+        tipusEvent.text = eventModel.eventTypeName
+        sinopsis.text = eventModel.introduction
         director.text = eventModel.director
-        fecha.text = eventModel.fecha
-        hora.text = eventModel.hora
+        fecha.text = eventModel.getDateZ()
+        hora.text = eventModel.getTime()
     }
 }

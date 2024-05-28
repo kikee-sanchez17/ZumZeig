@@ -2,6 +2,7 @@ package libraries
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
+import com.example.zumzeig.Login
 import com.example.zumzeig.R
 
 class FunctionUtility {
@@ -28,7 +29,7 @@ class FunctionUtility {
         val dialog = builder.create()
         dialog.show()
     }
-     fun showAlertDialog(context: Context,title: String, message: String) {
+     fun showAlertDialog(context: Login, title: String, message: String) {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(title)
         builder.setMessage(message)
