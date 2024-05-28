@@ -1,5 +1,4 @@
 package com.example.zumzeig
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.FrameLayout
@@ -11,7 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.zumzeig.R
+import fragments.CalendarFragment
+import fragments.HomeFragment
+import fragments.SavedFragment
+import fragments.UserFragment
 
 
 class MainActivity : AppCompatActivity() {

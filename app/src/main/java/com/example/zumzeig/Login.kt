@@ -7,7 +7,6 @@ import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -15,11 +14,12 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
+import libraries.FunctionUtility
 import network.MyStringRequest
 import org.json.JSONException
 import org.json.JSONObject
 
-class login : AppCompatActivity() {
+class Login : AppCompatActivity() {
     private lateinit var emailEt: EditText
     private lateinit var passwordEt: EditText
     private lateinit var forgotpasswordEt: TextView
@@ -31,49 +31,66 @@ class login : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Set layout from XML file
         setContentView(R.layout.activity_login)
+
+        // Adjust padding to account for system bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Initialize views
         emailEt = findViewById(R.id.email)
         noaccountEt = findViewById(R.id.textNoAccount)
         forgotpasswordEt = findViewById(R.id.loginForgotPassword)
         passwordEt = findViewById(R.id.password)
         loginBtn = findViewById(R.id.login)
+
+        // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", MODE_PRIVATE)
+
+        // Initialize Volley request queue
         queue = Volley.newRequestQueue(this)
+
+        // Check if the user is already logged in
         if(sharedPreferences.getString("logged","false").equals("true")){
             val intent= Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        // Click listener for forgot password text view
         forgotpasswordEt.setOnClickListener{
             val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
             finish()
         }
+
+        // Click listener for no account text view
         noaccountEt.setOnClickListener{
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
             finish()
         }
+
+        // Click listener for login button
         loginBtn.setOnClickListener {
             val email: String = emailEt.text.toString()
             val pass: String = passwordEt.text.toString()
 
-            // Validación de email y contraseña
+            // Validation of email and password
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 emailEt.error = getString(R.string.invalid_email)
-            } else if (pass.length < 6) {
+            } else if (!FunctionUtility().checkPassword(pass)) {
                 passwordEt.error = getString(R.string.short_password)
             } else {
                 val params = mapOf(
                     "email" to email,
                     "password" to pass
                 )
-//hola
 
                 val stringRequest = MyStringRequest(
                     Request.Method.POST, url, params,
@@ -90,7 +107,7 @@ class login : AppCompatActivity() {
                                 val birthday = userInfo.getString("birthday")
                                 val phoneNumber = userInfo.getString("phone_number")
 
-                                // Guardar la información del usuario en SharedPreferences
+                                // Save user information in SharedPreferences
                                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
                                 editor.putString("logged", "true")
                                 editor.putString("email", email)
@@ -102,36 +119,27 @@ class login : AppCompatActivity() {
                                 editor.putString("phone_number", phoneNumber)
                                 editor.apply()
 
-                                // Iniciar la siguiente actividad
+                                // Start the next activity
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                                 finish()
                             } else {
                                 val message = jsonResponse.getString("message")
-                                showAlertDialog("Error", message)
+                                FunctionUtility().showAlertDialog(this,"Error", message)
                             }
                         } catch (e: JSONException) {
                             e.printStackTrace()
-                            showAlertDialog("Error", "An error occurred")
+                            FunctionUtility().showAlertDialog(this,"Error", "An error occurred")
                         }
                     },
                     Response.ErrorListener { error ->
                         error.printStackTrace()
-                        showAlertDialog("Error", "Network error")
+                        FunctionUtility().showAlertDialog(this,"Error", "Network error")
                     }
                 )
 
                 queue.add(stringRequest)
             }
         }
-    }
-
-    private fun showAlertDialog(title: String, message: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle(title)
-        builder.setMessage(message)
-        builder.setPositiveButton("Accept", null)
-        val dialog = builder.create()
-        dialog.show()
     }
 }
