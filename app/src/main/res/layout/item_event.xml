@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgEvent"
+        android:layout_width="0dp"
+        android:layout_height="223dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rebeladas" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/eventDerecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/eventIzquierda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <TextView
+        android:id="@+id/titleEvent"
+        style="@style/Title1Style"
+        android:layout_width="419dp"
+        android:layout_height="86dp"
+        android:text="Rebeladas"
+        android:textAlignment="textStart"
+        android:textColor="@color/redZumzeig"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgEvent" />
+
+    <TextView
+        android:id="@+id/tipusEvent"
+        style="@style/enventStyle"
+        android:layout_width="391dp"
+        android:layout_height="48dp"
+        android:text="Paral·leles"
+        android:textColor="@color/redZumzeig"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleEvent" />
+
+    <TextView
+        android:id="@+id/sinopsisText"
+        style="@style/subtitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="108dp"
+        android:text="Un documental sobre les integrants de El Colectivo Cine Mujer; la seva feina, història i evolució. Sessió que forma part de La Mostra Internacional de Films de Dones de Barcelona (MIFDB), un festival dissident, feminista i apassionat que es concentra en dos moments de l’any."
+        android:textAlignment="textStart"
+        app:layout_constraintEnd_toStartOf="@+id/eventIzquierda"
+        app:layout_constraintStart_toStartOf="@+id/eventDerecha"
+        app:layout_constraintTop_toBottomOf="@id/tipusEvent" />
+
+    <TextView
+        android:id="@+id/eventDirector"
+        style="@style/subtitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:text="Andrea Gautier, Tabatta Salinas"
+        app:layout_constraintEnd_toStartOf="@+id/eventIzquierda"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/eventDerecha"
+        app:layout_constraintTop_toBottomOf="@id/sinopsisText" />
+
+    <TextView
+        android:id="@+id/eventFecha"
+        style="@style/subtitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:text="Dimarts 28.5.24"
+        app:layout_constraintEnd_toStartOf="@+id/eventIzquierda"
+        app:layout_constraintStart_toStartOf="@+id/eventDerecha"
+        app:layout_constraintTop_toBottomOf="@id/eventDirector" />
+
+    <TextView
+        android:id="@+id/eventHora"
+        style="@style/subtitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="0dp"
+        android:text="00:00"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/eventIzquierda"
+        app:layout_constraintStart_toStartOf="@+id/eventDerecha"
+        app:layout_constraintTop_toBottomOf="@id/eventFecha" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

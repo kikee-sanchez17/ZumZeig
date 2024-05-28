@@ -18,6 +18,7 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
+import fragments.HomeFragment
 import libraries.FunctionUtility
 import network.MyStringRequest
 
@@ -67,7 +68,7 @@ class SignUp : AppCompatActivity() {
 
         // Check if user is already logged in
         if(sharedPreferences.getString("logged","false").equals("true")){
-            val intent= Intent(this, MainActivity::class.java)
+            val intent= Intent(this, HomeFragment::class.java)
             startActivity(intent)
             finish()
         }
