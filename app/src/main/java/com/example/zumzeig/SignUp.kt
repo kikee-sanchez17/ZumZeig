@@ -1,5 +1,5 @@
 package com.example.zumzeig
-import android.content.Context
+
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -18,32 +18,42 @@ import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
+import libraries.FunctionUtility
 import network.MyStringRequest
 
 class SignUp : AppCompatActivity() {
+    // Declare views
     private lateinit var emailEt: EditText
     private lateinit var nameEt: EditText
     private lateinit var lastnameEt: EditText
     private lateinit var loginaccesEt: TextView
     private lateinit var passwordEt: EditText
     private lateinit var repeatpasswordEt: EditText
-    private lateinit var queue: RequestQueue
     private lateinit var loginBtn: Button
+
+    // Declare variables for SharedPreferences and network request
     private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var queue: RequestQueue
     private var url: String="https://enricsanchezmontoya.cat/zumzeig/save.php"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Enable edge-to-edge display
         enableEdgeToEdge()
+
+        // Set layout from XML file
         setContentView(R.layout.activity_sign_up)
+
+        // Adjust padding to account for system bars
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Initialize views
         loginaccesEt=findViewById(R.id.loginAccess)
-        sharedPreferences=getSharedPreferences("UserInfo", MODE_PRIVATE)
-        queue = Volley.newRequestQueue(this)
         emailEt = findViewById(R.id.email)
         nameEt = findViewById(R.id.name)
         lastnameEt = findViewById(R.id.lastName)
@@ -51,18 +61,25 @@ class SignUp : AppCompatActivity() {
         repeatpasswordEt = findViewById(R.id.repeatPassword)
         loginBtn = findViewById(R.id.register)
 
+        // Initialize SharedPreferences and Volley request queue
+        sharedPreferences=getSharedPreferences("UserInfo", MODE_PRIVATE)
+        queue = Volley.newRequestQueue(this)
+
+        // Check if user is already logged in
         if(sharedPreferences.getString("logged","false").equals("true")){
             val intent= Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
+
+        // Click listener for login access text view
         loginaccesEt.setOnClickListener {
-            val intent= Intent(this, login::class.java)
+            val intent= Intent(this, Login::class.java)
             startActivity(intent)
             finish()
         }
-        //hola
 
+        // Click listener for register button
         loginBtn.setOnClickListener {
             var name: String = nameEt.getText().toString()
             var email: String = emailEt.getText().toString()
@@ -70,24 +87,25 @@ class SignUp : AppCompatActivity() {
             var pass: String = passwordEt.getText().toString()
             var passRepeat: String = repeatpasswordEt.getText().toString()
 
-
-
-            if (!passwordValidate(this, pass, passRepeat)) {
+            // Validate password using FunctionUtility class
+            if (!FunctionUtility().passwordValidate(this, pass, passRepeat)) {
                 return@setOnClickListener
             }
+
             // Email validation
             // If not in email format
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 emailEt.setError(getString(R.string.invalid_email))
-            } else if (pass.length < 6) {
+            } else if (!FunctionUtility().checkPassword(pass)) {
                 passwordEt.setError(getString(R.string.short_password))
             } else {
+                // Call method to register player
                 registerPlayer(email,name,lastName,pass)
             }
-
         }
-
     }
+
+    // Method to register player
     fun registerPlayer(email: String, name: String, lastname: String, password: String){
         val params = mapOf(
             "name" to name,
@@ -98,9 +116,9 @@ class SignUp : AppCompatActivity() {
         val stringRequest = MyStringRequest(
             Request.Method.POST,url,params,
             Response.Listener<String> { response ->
-                // Manejar la respuesta exitosa
+                // Handle successful response
                 if (response == "Email already exists") {
-                    // Mostrar un AlertDialog si el correo ya existe
+                    // Show AlertDialog if email already exists
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("Error")
                     builder.setMessage("Email already exists")
@@ -118,38 +136,14 @@ class SignUp : AppCompatActivity() {
                     val intent= Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     finish()
-
                 }
-
             },
             Response.ErrorListener { error ->
-                // Manejar el error
+                // Handle error
                 Toast.makeText(this, "User not created", Toast.LENGTH_LONG).show()
                 Log.e("SignUp", "Error: ${error.message}")
-
-
             }
         )
         queue.add(stringRequest)
     }
-
-    fun passwordValidate(context: Context, pass1: String, pass2: String): Boolean {
-        return if (pass1 == pass2) {
-            true // Passwords match
-        } else {
-            // Passwords don't match, show alert dialog
-            showAlert(context)
-            false
-        }
-
-    }
-    fun showAlert(context: Context) {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle(context.getString(R.string.error_title))
-        builder.setMessage(context.getString(R.string.error_message))
-        builder.setPositiveButton(context.getString(R.string.accept_button), null)
-        val dialog = builder.create()
-        dialog.show()
-    }
-
 }
