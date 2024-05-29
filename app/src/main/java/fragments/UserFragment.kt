@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.zumzeig.Login
 import com.example.zumzeig.R
 import com.example.zumzeig.SignUp
 
@@ -28,11 +29,9 @@ class UserFragment : Fragment() {
         Log.d("tete",sharedPreferences.getString("logged","false").toString())
 
         if(sharedPreferences.getString("logged","false").equals("false")){
-            val intent= Intent(requireActivity(), SignUp::class.java)
+            val intent= Intent(requireActivity(), Login::class.java)
             startActivity(intent)
             requireActivity().finish()
-        }else{
-
         }
     }
 
