@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Toast
+import utils.OnEventClickListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,67 +27,41 @@ import com.google.gson.Gson
 import model.Event
 import network.MyStringRequest
 import org.json.JSONException
-import utils.OnEventClickListener
 
-class SavedFragment : Fragment(), OnEventClickListener {
+class BillboardFragment : Fragment(),OnEventClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventBillboardAdapter: EventBillboardAdapter
     var events = mutableListOf<Event>()
-    private var url: String = "https://enricsanchezmontoya.cat/zumzeig/eventssaved.php"
-    private lateinit var queue: RequestQueue
-    private lateinit var imageButton: ImageButton
+    private var url: String = "https://enricsanchezmontoya.cat/zumzeig/fragmenthome.php"
+    private var urlsave: String = "https://enricsanchezmontoya.cat/zumzeig/saveevent.php"
+    private lateinit  var queue: RequestQueue
     private lateinit var sharedPreferences: SharedPreferences
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_saved, container, false)
+        return inflater.inflate(R.layout.fragment_billboard, container, false)
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
-        Log.d("tete",sharedPreferences.getString("logged","false").toString())
-
-        if(sharedPreferences.getString("logged","false").equals("false")){
-            val intent= Intent(requireActivity(), Login::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-        }else{
-
         recyclerView = view.findViewById(R.id.RecyclerTwo)
-        queue = Volley.newRequestQueue(requireContext())
-        val id =sharedPreferences.getString("user_ID","false").toString()
-        val allFields: Map<String, *> = sharedPreferences.all
+        queue=Volley.newRequestQueue(requireContext())
+        sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
 
-        // Creamos un StringBuilder para construir el string resultante
-        val stringBuilder = StringBuilder()
-
-        // Iteramos sobre todos los campos y los agregamos al StringBuilder
-        for ((key, value) in allFields) {
-            stringBuilder.append("$key: $value\n")
-        }
-        Log.d("infouser",stringBuilder.toString())
-        val params = mapOf(
-            "id" to id,
-        )
-            val urlWithParams = url + "?" + params.map { "${it.key}=${it.value}" }.joinToString("&")
-
-            val stringRequest = MyStringRequest(
-            Request.Method.GET, urlWithParams,params,
+        val getAllEvents = StringRequest(
+            Request.Method.GET, url,
             Response.Listener { response ->
                 try {
                     // Parsear la respuesta JSON a una lista de objetos Event
                     val gson = Gson()
-                    Log.d("adios",response)
                     val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
 
                     // Manejar la lista de eventos
                     for (event in eventsArray) {
                         events.add(event)
-                        Log.d("eventossaved",events.toString())
+
                         // Aquí puedes crear objetos Event y hacer lo que necesites con ellos
                     }
                     initRecyclerView()
@@ -100,16 +76,48 @@ class SavedFragment : Fragment(), OnEventClickListener {
         )
 
         // Añadir la solicitud a la cola de solicitudes
-        queue.add(stringRequest)
-        }
+        queue.add(getAllEvents)
+
     }
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
-        eventBillboardAdapter = EventBillboardAdapter(requireContext(),events,this)
+        eventBillboardAdapter = EventBillboardAdapter(requireContext(),events,this,)
         recyclerView.adapter = eventBillboardAdapter
     }
 
     override fun onEventClick(eventId: Int) {
-        TODO("Not yet implemented")
+        if(sharedPreferences.getString("logged","false").equals("false")){
+            val intent= Intent(requireActivity(), Login::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }else{
+        val idUser =sharedPreferences.getString("user_ID","false").toString()
+        val params = mapOf(
+            "idEvent" to eventId.toString(),
+            "idUser" to idUser
+        )
+        val saveEvent = MyStringRequest(
+            Request.Method.POST, urlsave,params,
+            Response.Listener { response ->
+                Log.d("saveevent",response + eventId+" "+idUser)
+                if(response=="Event saved successfully.") {
+                    Toast.makeText(requireContext(), "Event saved successfully.", Toast.LENGTH_LONG).show()
+
+                }else if(response=="Event is already saved."){
+                    Toast.makeText(requireContext(), response, Toast.LENGTH_LONG).show()
+
+                }else{
+                    Toast.makeText(requireContext(), response, Toast.LENGTH_LONG).show()
+                }
+            },
+            Response.ErrorListener { error ->
+                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+            }
+        )
+            queue.add(saveEvent)
+        }
+
+
     }
+
 }

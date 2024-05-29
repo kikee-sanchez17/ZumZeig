@@ -2,6 +2,7 @@ package com.example.zumzeig
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -98,6 +99,7 @@ class NewPassword : AppCompatActivity() {
                             } else {
                                 // Show response message
                                 Toast.makeText(this, response, Toast.LENGTH_LONG).show()
+                                Log.d("holaa", response)
                             }
                         } catch (e: JSONException) {
                             e.printStackTrace()
