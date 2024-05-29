@@ -100,6 +100,8 @@ class Login : AppCompatActivity() {
                             val status = jsonResponse.getString("status")
                             if (status == "success") {
                                 val userInfo = jsonResponse.getJSONObject("user_info")
+
+                                val user_ID = userInfo.getString("user_ID")
                                 val name = userInfo.getString("name")
                                 val lastName = userInfo.getString("last_name")
                                 val country = userInfo.getString("country")
@@ -110,6 +112,7 @@ class Login : AppCompatActivity() {
                                 // Save user information in SharedPreferences
                                 val editor: SharedPreferences.Editor = sharedPreferences.edit()
                                 editor.putString("logged", "true")
+                                editor.putString("user_ID",user_ID)
                                 editor.putString("email", email)
                                 editor.putString("name", name)
                                 editor.putString("last_name", lastName)

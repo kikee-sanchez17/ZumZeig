@@ -10,7 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -21,6 +20,8 @@ import com.android.volley.toolbox.Volley
 import fragments.HomeFragment
 import libraries.FunctionUtility
 import network.MyStringRequest
+import org.json.JSONException
+import org.json.JSONObject
 
 class SignUp : AppCompatActivity() {
     // Declare views
@@ -117,26 +118,31 @@ class SignUp : AppCompatActivity() {
         val stringRequest = MyStringRequest(
             Request.Method.POST,url,params,
             Response.Listener<String> { response ->
-                // Handle successful response
-                if (response == "Email already exists") {
-                    // Show AlertDialog if email already exists
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Error")
-                    builder.setMessage("Email already exists")
-                    builder.setPositiveButton("Accept", null)
-                    val dialog = builder.create()
-                    dialog.show()
-                }else{
-                    Toast.makeText(this, "User created", Toast.LENGTH_LONG).show()
-                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                    editor.putString("logged","true")
-                    editor.putString("name",name)
-                    editor.putString("email ",email)
-
-                    editor.apply()
-                    val intent= Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                try {
+                    val jsonResponse = JSONObject(response)
+                    val status = jsonResponse.getString("status")
+                    val message = jsonResponse.getString("message")
+                    if (status == "success") {
+                        val userId = jsonResponse.getInt("user_id")
+                        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                        editor.putString("logged", "true")
+                        editor.putString("name", name)
+                        editor.putString("email", email)
+                        // Si necesitas el ID de usuario en algún lugar, puedes guardarlo en SharedPreferences también
+                        editor.putInt("user_id", userId)
+                        editor.apply()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        // Si hay un error, muestra el mensaje de error
+                        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                    // Manejar cualquier error de análisis JSON aquí
+                    Toast.makeText(this, "Error parsing JSON", Toast.LENGTH_LONG).show()
                 }
             },
             Response.ErrorListener { error ->
