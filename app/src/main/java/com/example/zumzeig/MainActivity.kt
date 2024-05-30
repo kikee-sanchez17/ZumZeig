@@ -34,10 +34,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener { item: MenuItem ->
             val itemId = item.itemId
             when (itemId) {
+
                 R.id.navHome -> loadFragment(HomeFragment(), false)
                 R.id.navCalendar -> loadFragment(CalendarFragment(), false)
                 R.id.navSaved -> loadFragment(SavedFragment(), false)
-                else -> loadFragment(UserFragment(), false) // nav Profile
+                else -> loadFragment(UserFragment(supportFragmentManager), false) // nav Profile
             }
 
             true

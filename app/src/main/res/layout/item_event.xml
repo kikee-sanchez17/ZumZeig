@@ -31,8 +31,8 @@
     <TextView
         android:id="@+id/titleEvent"
         style="@style/Title1Style"
-        android:layout_width="419dp"
-        android:layout_height="86dp"
+        android:layout_width="408dp"
+        android:layout_height="141dp"
         android:text="Rebeladas"
         android:textAlignment="textStart"
         android:textColor="@color/redZumzeig"

@@ -59,7 +59,11 @@
     <!-- end Què fem Static -->
 
     <!-- Historia Static -->
+
     <string name="historyText">Historia</string>
+
+    <string name="historyText">Què fem</string>
+
     <string name="descriptionHisText">Esteban Bernatas Chassaigne, amant entusiasta del setè art i activista cultural compromès amb la realitat contemporània, va fundar Zumzeig Cinema l’octubre de 2013 proposant, amb la infatigable ajuda de Guillaume Mariès i David Dorado, un model d’exhibició innovador a Espanya. Situat a les àmplies perifèries de la indústria, va apostar pel cinema independent, donant veu a opcions que tenen menor comercialització provinents de diverses corrents contemporànies actuals. Això va donar lloc a una sala que es va guanyar el reconeixement i simpatia de gran part de la comunitat cinèfila del país per la qualitat de la programació i la seva vocació activista.</string>
     <string name="btnVeureMesHis">Veure més</string>
     <string name="moreTextHis">A la primavera de 2016, Esteban i el seu equip van voler fer un pas al costat per fer possible una renovació del model que permetés enfocar-ho des d’una vessant encara més social. L’objectiu era mantenir una programació valenta, puntera i compromesa, tot creant un model de participació democràtica i popular, que tingués un major impacte del cinema en el seu entorn.</string>
@@ -110,4 +114,17 @@
     <!-- end Activitats educatives Static-->
 
     <!-- end Information Static-->
+
+
+    <!-- Profile Fragments-->
+    <string name="infoBtn">My info</string>
+    <string name="changePasswordBtn">Change Password</string>
+    <string name="feesBtn">Fees</string>
+    <string name="legal_notesBtn">Legal Notes</string>
+    <string name="logOutBtn">Log Out</string>
+    <string name="userNameTv">Name</string>
+    <string name="userEmailTv">Email</string>
+
+    <!-- end Profile Fragments-->
+
 </resources>
