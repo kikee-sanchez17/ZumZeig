@@ -45,5 +45,80 @@
     <string name="calendar_fragment">Calendar fragment</string>
     <string name="saved_fragment">Saved fragment</string>
     <string name="user_fragment">User fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- end Fragments-->
+
+    <!-- Information Static -->
+    <!-- Què fem Static -->
+    <string name="weDoText">Què fem</string>
+    <string name="descriptionText">Zumzeig és una cooperativa cultural de proximitat i sense ànim de lucre, formada per una base social de més de tres-centes persones. Punt de trobada, reflexió i oci, ofereix projeccions de cinema independent en versió original i diverses iniciatives artístiques, socials i solidàries.</string>
+    <string name="btnVeureMes">Veure més</string>
+    <string name="moreText">Una programació que aposta per continguts culturals de qualitat, trencant així el cercle d’invisibilitat a què moltes propostes artístiques són injustament sotmeses, en una seu amb sala i bistrot que esdevé un espai acollidor i polivalent.</string>
+    <string name="moreText2">Les diferents activitats i els seus espais de debat i reflexió suposen una ruptura de l’habitual unidireccionalitat de la pantalla: presentacions de pel·lícules, xerrades amb realitzadors, sessions de cineclub, trobades entre cineastes, concerts, paellades, taules rodones i debats, performances… i molts altres formats encara per explorar.</string>
+    <string name="btnVeureMenys">Veure menys</string>
+    <!-- end Què fem Static -->
+
+    <!-- Historia Static -->
+    <string name="historyText">Què fem</string>
+    <string name="descriptionHisText">Esteban Bernatas Chassaigne, amant entusiasta del setè art i activista cultural compromès amb la realitat contemporània, va fundar Zumzeig Cinema l’octubre de 2013 proposant, amb la infatigable ajuda de Guillaume Mariès i David Dorado, un model d’exhibició innovador a Espanya. Situat a les àmplies perifèries de la indústria, va apostar pel cinema independent, donant veu a opcions que tenen menor comercialització provinents de diverses corrents contemporànies actuals. Això va donar lloc a una sala que es va guanyar el reconeixement i simpatia de gran part de la comunitat cinèfila del país per la qualitat de la programació i la seva vocació activista.</string>
+    <string name="btnVeureMesHis">Veure més</string>
+    <string name="moreTextHis">A la primavera de 2016, Esteban i el seu equip van voler fer un pas al costat per fer possible una renovació del model que permetés enfocar-ho des d’una vessant encara més social. L’objectiu era mantenir una programació valenta, puntera i compromesa, tot creant un model de participació democràtica i popular, que tingués un major impacte del cinema en el seu entorn.</string>
+    <string name="moreText2His">Així es va conformar un grup inicial de 7 persones entusiastes. Aquestes van tornar a obrir les portes del Zumzeig després d’uns pocs mesos de transició, a través d’una cessió d’espai i instal·lacions basada en el pacte explícit de mantenir l’activisme cultural i social. Per començar la nova etapa, es va dur a terme una campanya de micromecenatge que va obtenir una resposta entusiasta i multitudinària. Així és com, el novembre del 2016, Zumzeig esdevé cooperativa.</string>
+    <string name="btnVeureMenysHis">Veure menys</string>
+    <!-- end Historia Static-->
+
+    <!-- Qui som Static -->
+    <string name="whoWeAreText">Qui som</string>
+    <string name="descriptionWhoText">Zumzeig compta amb una base social d’aproximadament 300 amigues i 24 sòcies col·laboradores. D`aquestes, vora 30 persones en són voluntàries actives, conformant alguna de les comissions de treball que vertebren el Zumzeig. Aquestes aportacions se sumen a la feina de les 4 sòcies treballadores, que realitzen tasques de coordinació, programació i projectes.</string>
+    <string name="btnVeureMesWho">Veure més</string>
+    <string name="titleMoreTextWho1">Sòcies treballadores</string>
+    <string name="moreText1Who1">Albert Triviño | coordinació i programació - programacio@zumzeigcine.coop</string>
+    <string name="moreText2Who1">Ana Matilde Uslenghi | comunicació - comunicacio@zumzeigcine.coop</string>
+    <string name="moreText3Who1">Carla Blanco | projeccions - projeccionistes@zumzeigcine.coop</string>
+    <string name="titleMoreTextWho2">Bistrot Zumzeig</string>
+    <string name="moreText1Who2">Jesús Herrera | bistrot@zumzeigcine.coop</string>
+    <string name="titleMoreTextWho3">Sòcies col·laboradores</string>
+    <string name="moreText1Who3">Eduardo Filippi, Joan Miquel Gual, Josep Calle, Déborah Camañes, Yonay Boix, Anna Brufau, Alba Villarmea, Esteban Bernatas, Javier Rueda, Ariadna Ribas, Miquel M. Freixas, Joan Alavedra, Sergio Álvarez Napagao, Ma Del Mar Capellades, Compacto Coop, El Sur Films, Roger Fortuny, Guillem Izquierdo, Xose López, Daniela Micheli, Cristian Planas, Carlos Pulido, Cristina Rubio, Martin Samper, Paco Poch Cinema, Teresa Sendagorta, Trama, Tractora Koop. E., Joan Vall, Teri Serra, Screenly</string>
+    <string name="moreText2Who3">... i les més de 400 persones que són amigues del Zumzeig!</string>
+    <string name="btnVeureMenysWho">Veure menys</string>
+    <!-- end Qui som Static-->
+
+    <!-- Cooperativisme Static -->
+    <string name="cooperativismText">Cooperativisme</string>
+    <string name="descriptionTextCoop">Zumzeig és un projecte d’activisme cultural sense ànim de lucre, basat en la creació d’una àmplia base social que participa de les seves activitats, organització i presa de decisions. Una estructura cooperativista amb una dinàmica de treball fluida i que integra orgànicament les capacitats, necessitats i disposicions de cada un dels seus membres.</string>
+    <string name="btnVeureMesCoop">Veure més</string>
+    <string name="moreTextCopp">Ser una cooperativa sense ànim de lucre significa trobar noves maneres de treballar l’exhibició cinematogràfica per promocionar valors com la participació, la igualtat, la transparència, la responsabilitat social i el cooperativisme, obrint els seus espais a multitud de noves propostes i activitats que tenen un impacte directe en la comunitat.</string>
+    <string name="moreText2Copp">També significa donar la volta a la “competència” i abraçar la “intercooperació”, establint una àmplia i diversa xarxa de solidaritat i proximitat amb entitats ètiques de la ciutat, especialment amb aquelles radicades al nostre mateix districte, per apropar-se a les respectives comunitats i treballar conjuntament en àrees tan importants com la formació audiovisual infantil, la creació de nous públics, l’educació de la mirada, etc.</string>
+    <string name="btnVeureMenysCopp">Veure menys</string>
+    <!-- end Cooperativisme Static-->
+
+    <!-- Barri Static -->
+    <string name="neighborhoodText">Barri</string>
+    <string name="descriptionTextNeig">La voluntat activista de Zumzeig encaixa amb la llarga tradició de moviment associatiu i cooperativista dels barris que conformen el districte de Sants-Montjuïc. Això possibilita i fa imprescindible establir aliances amb els altres col·lectius, cooperatives i entitats que hi operen i amb les quals podem trobar afinitats i generar dinàmiques de col·laboració estables.</string>
+    <string name="btnVeureMesNeig">Veure més</string>
+    <string name="moreTextNeig">La varietat en la programació busca convidar a tothom a trobar el seu espai, amb la voluntat de convertir-nos en el seu cinema de referència. A més, a través del carnet d’’Amiga del Zumzeig’ volem reforçar el concepte de comunitat, oferint espais i fórmules de representació a la cooperativa on poder fer-se escoltar, aportar idees i contribuir a fer créixer el projecte.</string>
+    <string name="moreText2Neig">Apostem pel districte i volem integrar-lo en les nostres activitats com a cinema, sortint al carrer, anant a buscar l’espectador i obrint debats participatius. Volem, en definitiva, que el cinema Zumzeig sigui indissociable del territori que habita.</string>
+    <string name="btnVeureMenysNeig">Veure menys</string>
+    <!-- end Barri Static-->
+
+    <!-- Activitats educatives Static -->
+    <string name="eduActivitiesText">Activitats educatives</string>
+    <string name="descriptionTextEduAc">En un món saturat d’estímuls visuals i tergiversat per les imatges, educar la mirada és fonamental per a desenvolupar una consciència pròpia i analítica. És important ensenyar a saber mirar, a mirar amb intenció, per esdevenir ciutadania crítica i no només consumidors passius o productors d’imatges volàtils.</string>
+    <string name="btnVeureMesEduAc">Veure més</string>
+    <string name="moreTextEduAc">Establim relacions amb les escoles, instituts i casals. Oferim sessions, tallers i altres activitats en horari lectiu pensades per als més joves i que fomenten l’educació en el lleure i la reflexió sobre la imatge. Oferta pedagògica disponible pròximamament.</string>
+    <string name="btnVeureMenysEduAc">Veure menys</string>
+    <!-- end Activitats educatives Static-->
+
+    <!-- end Information Static-->
+
+    <!-- Profile Fragments-->
+    <string name="infoBtn">My info</string>
+    <string name="changePasswordBtn">Change Password</string>
+    <string name="feesBtn">Fees</string>
+    <string name="legal_notesBtn">Legal Notes</string>
+    <string name="logOutBtn">Log Out</string>
+    <string name="userNameTv">Name</string>
+    <string name="userEmailTv">Email</string>
+
+    <!-- end Profile Fragments-->
 </resources>
