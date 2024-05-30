@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import fragments.BillboardFragment
 import fragments.CalendarFragment
 import fragments.HomeFragment
 import fragments.SavedFragment
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navHome -> loadFragment(HomeFragment(), false)
                 R.id.navCalendar -> loadFragment(CalendarFragment(), false)
                 R.id.navSaved -> loadFragment(SavedFragment(), false)
-                else -> loadFragment(BillboardFragment(), false) // nav Profile
+                else -> loadFragment(UserFragment(supportFragmentManager), false) // nav Profile
             }
 
             true

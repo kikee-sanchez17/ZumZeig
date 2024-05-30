@@ -2,6 +2,9 @@ package libraries
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.zumzeig.Login
 import com.example.zumzeig.R
 
@@ -37,4 +40,17 @@ class FunctionUtility {
         val dialog = builder.create()
         dialog.show()
     }
+    // Cambio en el método loadFragment: se pasa el FragmentManager como argumento
+    fun loadFragment(fragmentManager: FragmentManager, fragment: Fragment, isAppInitialized: Boolean) {
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+
+        if (isAppInitialized) {
+            fragmentTransaction.add(R.id.frameLayout, fragment)
+        } else {
+            fragmentTransaction.replace(R.id.frameLayout, fragment)
+        }
+
+        fragmentTransaction.commit()
+    }
+
 }

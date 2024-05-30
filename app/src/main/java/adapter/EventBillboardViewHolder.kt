@@ -1,6 +1,7 @@
 package adapter
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Build
 import android.util.Log
@@ -8,7 +9,6 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +17,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
+import com.example.zumzeig.Login
 import com.example.zumzeig.R
 import model.Event
 import network.MyStringRequest
@@ -40,8 +41,16 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
         director.text = eventModel.director
         fecha.text = "${eventModel.getDateZ()} ${eventModel.getTime()}"
         imageButton.setOnClickListener {
-            listener.onEventClick(eventModel.Event_ID)
-            imageButton.setImageResource(R.drawable.icon_save_filled)
+            if (sharedPreferences.getString("logged", "false") == "false") {
+                val intent = Intent(context, Login::class.java)
+                context.startActivity(intent)
+                // Si deseas cerrar la actividad actual después de iniciar la actividad de inicio de sesión,
+                // puedes usar (context as AppCompatActivity).finish() en lugar de requireActivity().finish().
+                (context as AppCompatActivity).finish()
+            } else {
+                listener.onEventClick(eventModel.Event_ID)
+                imageButton.setImageResource(R.drawable.icon_save_filled)
+            }
         }
     }
     fun isSaved(eventModel: Event) {
