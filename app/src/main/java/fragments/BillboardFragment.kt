@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -24,7 +25,7 @@ import network.MyStringRequest
 import org.json.JSONException
 import utils.OnEventClickListener
 
-class BillboardFragment : Fragment(),OnEventClickListener {
+class BillboardFragment(private val fragmentManager: FragmentManager) : Fragment(),OnEventClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventBillboardAdapter: EventBillboardAdapter
     var events = mutableListOf<Event>()
@@ -81,7 +82,7 @@ class BillboardFragment : Fragment(),OnEventClickListener {
         recyclerView.adapter = eventBillboardAdapter
     }
 
-    override fun onEventClick(eventId: Int) {
+    override fun onSaveIconClick(eventId: Int) {
 
         val idUser =sharedPreferences.getString("user_ID","false").toString()
         val params = mapOf(
@@ -109,6 +110,10 @@ class BillboardFragment : Fragment(),OnEventClickListener {
         queue.add(saveEvent)
 
 
+
+    }
+
+    override fun onEventClick(eventId: Int) {
 
     }
 

@@ -110,6 +110,9 @@ class SavedFragment : Fragment(), OnEventClickListener {
     }
 
     override fun onEventClick(eventId: Int) {
+    }
+
+    override fun onSaveIconClick(eventId: Int) {
 
         val idUser =sharedPreferences.getString("user_ID","false").toString()
         val params = mapOf(
