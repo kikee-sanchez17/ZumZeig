@@ -1,0 +1,588 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <!--Que fem-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/weDo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/weDoText"
+            style="@style/Title2Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/weDoText"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+        <TextView
+            android:id="@+id/descriptionText"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/descriptionText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weDoText" />
+
+        <TextView
+            android:id="@+id/btnVeureMes"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnVeureMes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionText" />
+
+        <TextView
+            android:id="@+id/moreText"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnVeureMes" />
+
+        <ImageView
+            android:id="@+id/ImgWeDo"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText" />
+
+        <TextView
+            android:id="@+id/moreText2"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText2"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ImgWeDo" />
+
+        <TextView
+            android:id="@+id/btnVeureMenys"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnVeureMenys"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="68dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Historia-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/historyText"
+            style="@style/Title2Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/historyText"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionHisText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionHisText"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/descriptionHisText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/historyText" />
+
+        <TextView
+            android:id="@+id/btnVeureMesHis"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnVeureMesHis"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionHisText" />
+
+        <ImageView
+            android:id="@+id/ImgHistory"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreTextHis" />
+
+        <TextView
+            android:id="@+id/moreTextHis"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreTextHis"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnVeureMesHis" />
+
+        <TextView
+            android:id="@+id/moreText2His"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText2His"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ImgHistory" />
+
+        <TextView
+            android:id="@+id/btnVeureMenysHis"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnVeureMenysHis"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText2His" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Qui som-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/whoWeAre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/whoWeAreText"
+            style="@style/Title2Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/whoWeAreText"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionWhoText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionWhoText"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/descriptionWhoText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/whoWeAreText" />
+
+        <TextView
+            android:id="@+id/btnVeureMesWho"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnVeureMesWho"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionWhoText" />
+
+        <TextView
+            android:id="@+id/titleMoreTextWho1"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/titleMoreTextWho1"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnVeureMesWho" />
+
+        <TextView
+            android:id="@+id/moreText1Who1"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText1Who1"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleMoreTextWho1" />
+
+        <TextView
+            android:id="@+id/moreText2Who1"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText2Who1"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText1Who1" />
+
+        <TextView
+            android:id="@+id/moreText3Who1"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText3Who1"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText2Who1" />
+
+        <TextView
+            android:id="@+id/titleMoreTextWho2"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/titleMoreTextWho2"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText3Who1" />
+
+        <TextView
+            android:id="@+id/moreText1Who2"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText1Who2"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleMoreTextWho2" />
+
+        <TextView
+            android:id="@+id/titleMoreTextWho3"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/titleMoreTextWho3"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText1Who2" />
+
+        <TextView
+            android:id="@+id/moreText1Who3"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText1Who3"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleMoreTextWho3" />
+
+        <TextView
+            android:id="@+id/moreText2Who3"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText2Who3"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText1Who3" />
+
+        <TextView
+            android:id="@+id/btnVeureMenysWho"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnVeureMenysWho"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText2Who3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Cooperativisme-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cooperativism"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/cooperativismText"
+            style="@style/Title2Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cooperativismText"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionTextCoop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionTextCoop"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/descriptionTextCoop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cooperativismText" />
+
+        <TextView
+            android:id="@+id/btnVeureMesCoop"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnVeureMesCoop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextCoop" />
+
+        <TextView
+            android:id="@+id/moreTextCopp"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreTextCopp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnVeureMesCoop" />
+
+        <TextView
+            android:id="@+id/moreText2Copp"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText2Copp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreTextCopp" />
+
+        <TextView
+            android:id="@+id/btnVeureMenysCopp"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnVeureMenysCopp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText2Copp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Barri-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/neighborhood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/neighborhoodText"
+            style="@style/Title2Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/neighborhoodText"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionTextNeig"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionTextNeig"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/descriptionTextNeig"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/neighborhoodText" />
+
+        <TextView
+            android:id="@+id/btnVeureMesNeig"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnVeureMesNeig"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextNeig" />
+
+        <TextView
+            android:id="@+id/moreTextNeig"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreTextNeig"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnVeureMesNeig" />
+
+        <ImageView
+            android:id="@+id/ImgNeighborhood"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreTextNeig" />
+
+        <TextView
+            android:id="@+id/moreText2Neig"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreText2Neig"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ImgNeighborhood" />
+
+        <TextView
+            android:id="@+id/btnVeureMenysNeig"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnVeureMenysNeig"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreText2Neig" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--Activitats educatives-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/eduActivities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/eduActivitiesText"
+            style="@style/Title2Style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/eduActivitiesText"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionTextEduAc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/descriptionTextEduAc"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/descriptionTextEduAc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/eduActivitiesText" />
+
+        <TextView
+            android:id="@+id/btnVeureMesEduAc"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnVeureMesEduAc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextEduAc" />
+
+        <ImageView
+            android:id="@+id/ImgEduActivities"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnVeureMesEduAc" />
+
+        <TextView
+            android:id="@+id/moreTextEduAc"
+            style="@style/staticText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="@string/moreTextEduAc"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ImgEduActivities" />
+
+        <TextView
+            android:id="@+id/btnVeureMenysEduAc"
+            style="@style/textButtonStaticStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnVeureMenysEduAc"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/moreTextEduAc" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>
+</ScrollView>
