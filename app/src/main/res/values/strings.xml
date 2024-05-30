@@ -126,5 +126,13 @@
     <string name="userEmailTv">Email</string>
 
     <!-- end Profile Fragments-->
+    <!-- Profile Info Fragment-->
+    <string name="nameUser">Name: </string>
+    <string name="lastNameUser">Last Name: </string>
+    <string name="countryUser">Country: </string>
+    <string name="postalCodeUser">Postal Code: </string>
+    <string name="birthdayUser">Birthday: </string>
+    <string name="phoneNumberUser">Phone Number: </string>
 
+    <!-- end Profile Info Fragments-->
 </resources>

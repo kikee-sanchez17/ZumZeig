@@ -19,6 +19,7 @@ import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.example.zumzeig.Login
 import com.example.zumzeig.R
+import libraries.FunctionUtility
 import model.Event
 import network.MyStringRequest
 import org.json.JSONObject
@@ -41,13 +42,8 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
         director.text = eventModel.director
         fecha.text = "${eventModel.getDateZ()} ${eventModel.getTime()}"
         imageButton.setOnClickListener {
-            if (sharedPreferences.getString("logged", "false") == "false") {
-                val intent = Intent(context, Login::class.java)
-                context.startActivity(intent)
-                // Si deseas cerrar la actividad actual después de iniciar la actividad de inicio de sesión,
-                // puedes usar (context as AppCompatActivity).finish() en lugar de requireActivity().finish().
-                (context as AppCompatActivity).finish()
-            } else {
+            FunctionUtility().checkUserLoggedIn(context, sharedPreferences) {
+                // Este bloque solo se ejecuta si el usuario está logueado
                 listener.onEventClick(eventModel.Event_ID)
                 imageButton.setImageResource(R.drawable.icon_save_filled)
             }
