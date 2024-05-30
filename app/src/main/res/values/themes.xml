@@ -1,5 +1,5 @@
 <!-- res/values/themes.xml -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight">
         <!-- Configuración general del tema -->
         <item name="colorPrimary">@color/black</item>
@@ -31,6 +31,17 @@
         <item name="android:layout_margin">8dp</item>
     </style>
 
+    <!-- Estilo del botón static page para tema claro -->
+    <style name="textButtonStaticStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textColor">@color/greyStaticButton</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
     <!-- Estilo de los editText del login and sign up para tema claro -->
     <style name="EditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxBackgroundMode">outline</item>
@@ -56,6 +67,29 @@
         <item name="android:layout_margin">8dp</item>
     </style>
 
+    <!-- Estilo de los titulos 2 de las paginas staticas para tema claro -->
+    <style name="Title2Style" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <!-- Estilo de los textos de las paginas staticas para tema claro -->
+    <style name="staticText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_marginBottom">15px</item>
+    </style>
+
+
     <!-- Estilo de los subtitulos para tema claro -->
     <style name="subtitleStyle" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/black</item>
@@ -65,6 +99,7 @@
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:textStyle">normal</item>
     </style>
+
 
     <!--Event style Tipo evento-->
     <style name="enventStyle" parent="Widget.AppCompat.Button">

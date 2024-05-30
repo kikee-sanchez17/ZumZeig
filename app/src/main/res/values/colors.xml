@@ -8,4 +8,6 @@
     <color name="yellowZumzeig">#ffd65a</color><!--Infantil-->
     <color name="purpleZumzeig">#856fe0</color><!--Experimental-->
     <color name="turquoiseZumzeig">#51C1A7</color><!--Festivals i cicles-->
+    <color name="greyStaticButton">#818181</color><!--Static page Button-->
+    <color name="backgroundStaticPage">#ECE7E1</color><!--Background static pages-->
 </resources>
