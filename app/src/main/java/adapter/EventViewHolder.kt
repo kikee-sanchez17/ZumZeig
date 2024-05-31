@@ -42,12 +42,12 @@ class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         // Change title style based on event type
         when(eventModel.eventTypeName) {
-            "Parallel" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleParalelas)
-            "Premieres" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleEstrenos)
-            "Children" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleInfantil)
+            "Paralelas" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleParalelas)
+            "Estrenos" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleEstrenos)
+            "Infantil" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleInfantil)
             "Experimental" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleExperimental)
-            "Festivals and Cycles" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleFestivales)
-            "News" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleNoticia)
+            "Festivales y ciclos" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleFestivales)
+            "Noticia" -> titleEvent.setTextAppearance(R.style.titleCarteleraStyleNoticia)
         }
     }
 }
