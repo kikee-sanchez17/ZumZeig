@@ -11,15 +11,14 @@ import com.bumptech.glide.Glide
 import com.example.zumzeig.R
 
 class InformacioStatic : Fragment() {
-
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_informacio_static, container, false)
-
-        // Que fem
+        // Setup "What we do" section
         setupSection1(
             view,
             R.id.weDo,
@@ -33,7 +32,7 @@ class InformacioStatic : Fragment() {
             imageUrl = "https://enricsanchezmontoya.cat/zumzeig/images/Static/queFemInformacioStatic.jpg"
         )
 
-        // Historia
+        // Setup "History" section
         setupSection5(
             view,
             R.id.history,
@@ -47,7 +46,7 @@ class InformacioStatic : Fragment() {
             imageUrl = "https://enricsanchezmontoya.cat/zumzeig/images/Static/historiaInformacioStatic.jpg"
         )
 
-        // Qui som
+        // Setup "Who we are" section
         setupSection2(
             view,
             R.id.whoWeAre,
@@ -66,7 +65,7 @@ class InformacioStatic : Fragment() {
             R.id.btnVeureMenysWho
         )
 
-        // Cooperativisme
+        // Setup "Cooperativism" section
         setupSection3(
             view,
             R.id.cooperativism,
@@ -78,7 +77,7 @@ class InformacioStatic : Fragment() {
             R.id.btnVeureMenysCopp
         )
 
-        // Barri
+        // Setup "Neighborhood" section
         setupSection1(
             view,
             R.id.neighborhood,
@@ -92,7 +91,7 @@ class InformacioStatic : Fragment() {
             imageUrl = "https://enricsanchezmontoya.cat/zumzeig/images/Static/barrioInformacioStatic.jpg"
         )
 
-        // Activitats educatives
+        // Setup "Educational Activities" section
         setupSection4(
             view,
             R.id.eduActivities,
@@ -107,7 +106,7 @@ class InformacioStatic : Fragment() {
 
         return view
     }
-
+    // Setup methods for each section with expandable text
     private fun setupSection1(
         view: View,
         layoutId: Int,
@@ -120,6 +119,7 @@ class InformacioStatic : Fragment() {
         btnVeureMenysId: Int = View.NO_ID,  // Valor por defecto
         imageUrl: String? = null  // Valor por defecto
     ) {
+        // Initialization of views
         val titleText = view.findViewById<TextView>(titleId)
         val descriptionText = view.findViewById<TextView>(descriptionId)
         val btnVeureMes = view.findViewById<TextView>(btnVeureMesId)
@@ -127,7 +127,7 @@ class InformacioStatic : Fragment() {
         val imageView = if (imageViewId != View.NO_ID) view.findViewById<ImageView>(imageViewId) else null
         val moreText2 = if (moreText2Id != View.NO_ID) view.findViewById<TextView>(moreText2Id) else null
         val btnVeureMenys = if (btnVeureMenysId != View.NO_ID) view.findViewById<TextView>(btnVeureMenysId) else null
-
+        // Click listeners to expand/collapse text
         btnVeureMes.setOnClickListener {
             moreText.visibility = View.VISIBLE
             imageView?.visibility = View.VISIBLE
@@ -165,6 +165,7 @@ class InformacioStatic : Fragment() {
         moreText23Id: Int,
         btnVeureMenysId: Int = View.NO_ID  // Valor por defecto
     ) {
+        // Initialization of views
         val titleText = view.findViewById<TextView>(titleId)
         val descriptionText = view.findViewById<TextView>(descriptionId)
         val btnVeureMes = view.findViewById<TextView>(btnVeureMesId)
@@ -178,7 +179,7 @@ class InformacioStatic : Fragment() {
         val moreText13 = view.findViewById<TextView>(moreText13Id)
         val moreText23 = view.findViewById<TextView>(moreText23Id)
         val btnVeureMenys = if (btnVeureMenysId != View.NO_ID) view.findViewById<TextView>(btnVeureMenysId) else null
-
+// Click listeners to expand/collapse text
         btnVeureMes.setOnClickListener {
             moreText11.visibility = View.VISIBLE
             moreText21.visibility = View.VISIBLE
@@ -218,13 +219,14 @@ class InformacioStatic : Fragment() {
         moreText2Id: Int = View.NO_ID,  // Valor por defecto
         btnVeureMenysId: Int = View.NO_ID  // Valor por defecto
     ) {
+        // Initialization of views
         val titleText = view.findViewById<TextView>(titleId)
         val descriptionText = view.findViewById<TextView>(descriptionId)
         val btnVeureMes = view.findViewById<TextView>(btnVeureMesId)
         val moreText = view.findViewById<TextView>(moreTextId)
         val moreText2 = if (moreText2Id != View.NO_ID) view.findViewById<TextView>(moreText2Id) else null
         val btnVeureMenys = if (btnVeureMenysId != View.NO_ID) view.findViewById<TextView>(btnVeureMenysId) else null
-
+// Click listeners to expand/collapse text
         btnVeureMes.setOnClickListener {
             moreText.visibility = View.VISIBLE
             moreText2?.visibility = View.VISIBLE
@@ -251,13 +253,14 @@ class InformacioStatic : Fragment() {
         btnVeureMenysId: Int = View.NO_ID,  // Valor por defecto
         imageUrl: String? = null  // Valor por defecto
     ) {
+        // Initialization of views
         val titleText = view.findViewById<TextView>(titleId)
         val descriptionText = view.findViewById<TextView>(descriptionId)
         val btnVeureMes = view.findViewById<TextView>(btnVeureMesId)
         val imageView = if (imageViewId != View.NO_ID) view.findViewById<ImageView>(imageViewId) else null
         val moreText = view.findViewById<TextView>(moreTextId)
         val btnVeureMenys = if (btnVeureMenysId != View.NO_ID) view.findViewById<TextView>(btnVeureMenysId) else null
-
+        // Click listeners to expand/collapse text
         btnVeureMes.setOnClickListener {
             moreText.visibility = View.VISIBLE
             imageView?.visibility = View.VISIBLE

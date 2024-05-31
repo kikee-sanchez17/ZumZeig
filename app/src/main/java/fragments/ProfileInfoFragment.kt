@@ -28,6 +28,7 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
     private lateinit var queue: RequestQueue
     private var url: String = "https://enricsanchezmontoya.cat/zumzeig/updateuserinfo.php"
 
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,22 +37,22 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
         return inflater.inflate(R.layout.fragment_profile_info, container, false)
     }
 
+    // Initialize the fragment view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
         queue = Volley.newRequestQueue(requireContext())
         val emailUser: String = sharedPreferences.getString("email", "false").toString()
 
+        // Initialize views
         val editButton: Button = view.findViewById(R.id.editButton)
         val saveButton: Button = view.findViewById(R.id.saveButton)
-
         val nameEditText: EditText = view.findViewById(R.id.nameEditText)
         val lastNameEditText: EditText = view.findViewById(R.id.lastNameEditText)
         val countryEditText: EditText = view.findViewById(R.id.countryEditText)
         val postalCodeEditText: EditText = view.findViewById(R.id.postalCodeEditText)
         val birthdayEditText: EditText = view.findViewById(R.id.birthdayEditText)
         val phoneNumberEditText: EditText = view.findViewById(R.id.phoneNumberEditText)
-
         val nameTextView: TextView = view.findViewById(R.id.nameTextView)
         val lastNameTextView: TextView = view.findViewById(R.id.lastNameTextView)
         val countryTextView: TextView = view.findViewById(R.id.countryTextView)
@@ -59,37 +60,31 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
         val birthdayTextView: TextView = view.findViewById(R.id.birthdayTextView)
         val phoneNumberTextView: TextView = view.findViewById(R.id.phoneNumberTextView)
 
+        // Set text for user info views
         nameTextView.text = getString(R.string.nameUser) + " " + (sharedPreferences.getString("name", null) ?: "-")
         lastNameTextView.text = getString(R.string.lastNameUser) + " " + (sharedPreferences.getString("last_name", null) ?: "-")
-        if(sharedPreferences.getString("country","false").toString()=="null"){
-            countryTextView.text = getString(R.string.countryUser) + " -"
-
-        }else{
-            countryTextView.text = getString(R.string.countryUser) + " " + sharedPreferences.getString("country", "false").toString()
-
+        countryTextView.text = if (sharedPreferences.getString("country", "false").toString() == "null") {
+            getString(R.string.countryUser) + " -"
+        } else {
+            getString(R.string.countryUser) + " " + sharedPreferences.getString("country", "false").toString()
         }
-        if(sharedPreferences.getString("postal_code","false").toString()=="null"){
-            postalCodeTextView.text = getString(R.string.postalCodeUser) + " -"
-
-        }else{
-            postalCodeTextView.text = getString(R.string.postalCodeUser) + " " + sharedPreferences.getString("postal_code", "false").toString()
-
+        postalCodeTextView.text = if (sharedPreferences.getString("postal_code", "false").toString() == "null") {
+            getString(R.string.postalCodeUser) + " -"
+        } else {
+            getString(R.string.postalCodeUser) + " " + sharedPreferences.getString("postal_code", "false").toString()
         }
-        if(sharedPreferences.getString("birthday","false").toString()=="null"){
-            birthdayTextView.text = getString(R.string.birthdayUser) + " -"
-
-        }else{
-            birthdayTextView.text = getString(R.string.birthdayUser) + " " + sharedPreferences.getString("birthday", "false").toString()
-
+        birthdayTextView.text = if (sharedPreferences.getString("birthday", "false").toString() == "null") {
+            getString(R.string.birthdayUser) + " -"
+        } else {
+            getString(R.string.birthdayUser) + " " + sharedPreferences.getString("birthday", "false").toString()
         }
-        if(sharedPreferences.getString("phone_number","false").toString()=="null"){
-            phoneNumberTextView.text = getString(R.string.phoneNumberUser) + " -"
-
-        }else{
-            phoneNumberTextView.text = getString(R.string.phoneNumberUser) + " " + sharedPreferences.getString("phone_number", "false").toString()
-
+        phoneNumberTextView.text = if (sharedPreferences.getString("phone_number", "false").toString() == "null") {
+            getString(R.string.phoneNumberUser) + " -"
+        } else {
+            getString(R.string.phoneNumberUser) + " " + sharedPreferences.getString("phone_number", "false").toString()
         }
 
+        // Set onClickListener for edit button
         editButton.setOnClickListener {
             nameEditText.visibility = View.VISIBLE
             lastNameEditText.visibility = View.VISIBLE
@@ -98,10 +93,10 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
             birthdayEditText.visibility = View.VISIBLE
             phoneNumberEditText.visibility = View.VISIBLE
             saveButton.visibility = View.VISIBLE
-
             editButton.visibility = View.GONE
         }
 
+        // Set onClickListener for save button
         saveButton.setOnClickListener {
             val nameUser: String = nameEditText.text.toString()
             val lastNameUser: String = lastNameEditText.text.toString()
@@ -128,7 +123,7 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
                         val jsonResponse = JSONObject(response)
                         val status = jsonResponse.getString("status")
                         if (status == "success") {
-                            Log.d("Response", "Profile updated successfully")
+                            //Log.d("Response", "Profile updated successfully")
                             val editor: SharedPreferences.Editor = sharedPreferences.edit()
                             editor.putString("name", nameUser)
                             editor.putString("last_name", lastNameUser)
@@ -137,16 +132,12 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
                             editor.putString("birthday", birthdayUser)
                             editor.putString("phone_number", phoneNumberUser)
                             editor.apply()
-
                             Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_LONG).show()
-
                             val userFragment = fragmentManager.findFragmentByTag("UserFragment") as UserFragment?
                             userFragment?.refreshUserInfo()
-
                             FunctionUtility().loadFragment(fragmentManager, UserFragment(fragmentManager), false)
-
                         } else {
-                            Log.d("Response", "Failed to update profile")
+                            //Log.d("Response", "Failed to update profile")
                             Toast.makeText(requireContext(), "Failed to update profile", Toast.LENGTH_LONG).show()
                         }
                     } catch (e: JSONException) {
@@ -157,9 +148,8 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
                 Response.ErrorListener { error ->
                     error.printStackTrace()
                     Toast.makeText(requireContext(), "Error updating profile", Toast.LENGTH_LONG).show()
-                },
-
-                )
+                }
+            )
             queue.add(stringRequest)
         }
     }

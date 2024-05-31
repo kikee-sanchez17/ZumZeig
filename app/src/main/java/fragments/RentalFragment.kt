@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.zumzeig.R
 
+// Fragment class for the RentalFragment
 class RentalFragment : Fragment() {
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

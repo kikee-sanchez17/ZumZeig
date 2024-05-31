@@ -37,7 +37,7 @@ class SavedFragment : Fragment(), OnEventClickListener {
     private lateinit var imageButton: ImageButton
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var noEventsTextView: TextView
-
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,10 +45,11 @@ class SavedFragment : Fragment(), OnEventClickListener {
     ): View? {
         return inflater.inflate(R.layout.fragment_saved, container, false)
     }
+    // Initialize the fragment view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
-        Log.d("tete",sharedPreferences.getString("logged","false").toString())
+        //Log.d("tete",sharedPreferences.getString("logged","false").toString())
         noEventsTextView = view.findViewById(R.id.NoEventsSavedTV)
         if(sharedPreferences.getString("logged","false").equals("false")){
             val intent= Intent(requireActivity(), Login::class.java)
@@ -60,14 +61,14 @@ class SavedFragment : Fragment(), OnEventClickListener {
             val id = sharedPreferences.getString("user_ID", "false").toString()
             val allFields: Map<String, *> = sharedPreferences.all
 
-            // Creamos un StringBuilder para construir el string resultante
+            // Create a StringBuilder to build the resulting string
             val stringBuilder = StringBuilder()
 
-            // Iteramos sobre todos los campos y los agregamos al StringBuilder
+            // Iterate over all fields and append them to the StringBuilder
             for ((key, value) in allFields) {
                 stringBuilder.append("$key: $value\n")
             }
-            Log.d("infouser", stringBuilder.toString())
+            //Log.d("infouser", stringBuilder.toString())
             val params = mapOf(
                 "id" to id,
             )
@@ -77,21 +78,21 @@ class SavedFragment : Fragment(), OnEventClickListener {
                 Request.Method.GET, urlWithParams, params,
                 Response.Listener { response ->
                     try {
-                        if (response == "No se encontraron eventos.") {
+                        if (response == "No events found.") {
                             noEventsTextView.visibility = View.VISIBLE
                         } else {
-                            // Limpiar la lista de eventos antes de agregar nuevos eventos
+                            // Clear the list of events before adding new events
                             events.clear()
 
-                            // Parsear la respuesta JSON a una lista de objetos Event
+                            // Parse the JSON response into a list of Event objects
                             val gson = Gson()
                             val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
 
-                            // Manejar la lista de eventos
+                            // Handle the list of events
                             for (event in eventsArray) {
                                 events.add(event)
-                                Log.d("eventossaved", events.toString())
-                                // Aquí puedes crear objetos Event y hacer lo que necesites con ellos
+                                //Log.d("eventossaved", events.toString())
+                                // Here you can create Event objects and do whatever you need with them
                             }
                             initRecyclerView()
                         }
@@ -100,15 +101,15 @@ class SavedFragment : Fragment(), OnEventClickListener {
                     }
                 },
                 Response.ErrorListener { error ->
-                    Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+                    //Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
                 }
             )
 
-            // Añadir la solicitud a la cola de solicitudes
+            // Add the request to the request queue
             queue.add(stringRequest)
         }
     }
-
+    // Initialize the RecyclerView
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         eventBillboardAdapter = EventBillboardAdapter(requireContext(),events,this)
@@ -117,7 +118,7 @@ class SavedFragment : Fragment(), OnEventClickListener {
 
     override fun onEventClick(eventId: Int) {
     }
-
+    // Handle click on the save icon
     override fun onSaveIconClick(eventId: Int) {
 
         val idUser =sharedPreferences.getString("user_ID","false").toString()
@@ -128,7 +129,7 @@ class SavedFragment : Fragment(), OnEventClickListener {
         val saveEvent = MyStringRequest(
             Request.Method.POST, urldelete,params,
             Response.Listener { response ->
-                Log.d("deleteevent",response + eventId+" "+idUser)
+                //Log.d("deleteevent",response + eventId+" "+idUser)
                 if(response=="Event deleted successfully.") {
                     Toast.makeText(requireContext(), "Event deleted successfully.", Toast.LENGTH_LONG).show()
                     updateRecyclerViewAfterEventDeleted(eventId)
@@ -138,16 +139,16 @@ class SavedFragment : Fragment(), OnEventClickListener {
                 }
             },
             Response.ErrorListener { error ->
-                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+                //Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
             }
         )
         queue.add(saveEvent)
 
 
     }
-    // Método para actualizar el contenido del RecyclerView después de eliminar el evento
+    // Method to update the RecyclerView content after deleting the event
     private fun updateRecyclerViewAfterEventDeleted(eventId: Int) {
-        // Busca y elimina el evento de la lista
+        // Find and remove the event from the list
         val iterator = events.iterator()
         while (iterator.hasNext()) {
             val event = iterator.next()
@@ -156,7 +157,7 @@ class SavedFragment : Fragment(), OnEventClickListener {
                 break
             }
         }
-        // Notifica al adaptador que los datos han cambiado
+        // Notify the adapter that the data has changed
         eventBillboardAdapter.notifyDataSetChanged()
     }
 }

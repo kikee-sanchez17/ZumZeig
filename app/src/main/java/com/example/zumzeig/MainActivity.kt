@@ -24,27 +24,33 @@ import fragments.SchoolFragment
 import fragments.UserFragment
 import libraries.FunctionUtility
 
+// Declaration of the MainActivity class
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
 
+    // Method onCreate to initialize the main activity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Associate variables with layout elements
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigation_view)
         bottomNavigationView = findViewById(R.id.bottomNavView)
 
+        // Create toggle for the navigation drawer
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        // Set listener for items in the navigation drawer
         navigationView.setNavigationItemSelectedListener(this)
 
+        // Set listener for items in the bottom navigation bar
         bottomNavigationView.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
                 R.id.navHome -> FunctionUtility().loadFragment(supportFragmentManager,HomeFragment(), true)
@@ -55,9 +61,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             true
         }
 
+        // Load the home fragment when the activity starts
         FunctionUtility().loadFragment(supportFragmentManager,HomeFragment(), false)
     }
 
+    // Method handling selection of an item in the navigation drawer
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> FunctionUtility().loadFragment(supportFragmentManager,HomeFragment(), true)
@@ -70,11 +78,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_rental -> FunctionUtility().loadFragment(supportFragmentManager,RentalFragment(), true)
             R.id.nav_bistrot -> FunctionUtility().loadFragment(supportFragmentManager,BistrotFragment(), true)
         }
+        // Close the navigation drawer after selecting an item
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-
+    // Method handling the back button press on the device
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)

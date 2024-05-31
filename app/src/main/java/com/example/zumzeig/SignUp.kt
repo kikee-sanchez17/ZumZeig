@@ -123,14 +123,18 @@ class SignUp : AppCompatActivity() {
                     val status = jsonResponse.getString("status")
                     val message = jsonResponse.getString("message")
                     if (status == "success") {
-                        val userId = jsonResponse.getInt("user_id")
-                        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+                        val userId = jsonResponse.getString("user_id")
                         val editor: SharedPreferences.Editor = sharedPreferences.edit()
                         editor.putString("logged", "true")
                         editor.putString("name", name)
+                        editor.putString("last_name", lastname)
                         editor.putString("email", email)
+                        editor.putString("country", "null")
+                        editor.putString("postal_code", "null")
+                        editor.putString("birthday", "null")
+                        editor.putString("phone_number", "null")
                         // Si necesitas el ID de usuario en algún lugar, puedes guardarlo en SharedPreferences también
-                        editor.putInt("user_id", userId)
+                        editor.putString("user_ID", userId.toString())
                         editor.apply()
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
@@ -148,7 +152,7 @@ class SignUp : AppCompatActivity() {
             Response.ErrorListener { error ->
                 // Handle error
                 Toast.makeText(this, "User not created", Toast.LENGTH_LONG).show()
-                Log.e("SignUp", "Error: ${error.message}")
+                //Log.e("SignUp", "Error: ${error.message}")
             }
         )
         queue.add(stringRequest)

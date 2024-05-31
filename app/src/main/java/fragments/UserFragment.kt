@@ -18,6 +18,7 @@ import com.example.zumzeig.Login
 import com.example.zumzeig.R
 import libraries.FunctionUtility
 
+// Fragment for user profile
 class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var nameUserTv: TextView
@@ -29,6 +30,7 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
     private lateinit var logOutBtn: Button
     private lateinit var queue: RequestQueue
 
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,6 +39,7 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
         return inflater.inflate(R.layout.fragment_user, container, false)
     }
 
+    // Initialize the fragment view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         emailUserTv = view.findViewById(R.id.emailTv)
@@ -50,13 +53,16 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
         queue = Volley.newRequestQueue(requireContext())
         sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
 
-        FunctionUtility().checkUserLoggedIn(requireContext(),sharedPreferences){
+        // Check if the user is logged in and update UI accordingly
+        FunctionUtility().checkUserLoggedIn(requireContext(), sharedPreferences) {
             updateUI()
 
+            // Set click listener for log out button
             logOutBtn.setOnClickListener {
                 logOut()
             }
 
+            // Set click listener for user info button
             userInfoBtn.setOnClickListener {
                 FunctionUtility().loadFragment(
                     fragmentManager,
@@ -67,13 +73,13 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
         }
     }
 
-
-
+    // Update UI with user information
     private fun updateUI() {
         emailUserTv.text = sharedPreferences.getString("email", "false")
         nameUserTv.text = sharedPreferences.getString("name", "false")
     }
 
+    // Log out user
     private fun logOut() {
         Toast.makeText(requireContext(), "logged out", Toast.LENGTH_LONG).show()
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -84,6 +90,7 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
         requireActivity().finish()
     }
 
+    // Refresh user information
     fun refreshUserInfo() {
         val emailUser: String = sharedPreferences.getString("email", "false").toString()
         FunctionUtility().getUserInfoAndUpdateSharedPreferences(emailUser, queue, sharedPreferences) {

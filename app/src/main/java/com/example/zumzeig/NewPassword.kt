@@ -99,7 +99,7 @@ class NewPassword : AppCompatActivity() {
                             } else {
                                 // Show response message
                                 Toast.makeText(this, response, Toast.LENGTH_LONG).show()
-                                Log.d("holaa", response)
+                                //Log.d("holaa", response)
                             }
                         } catch (e: JSONException) {
                             e.printStackTrace()

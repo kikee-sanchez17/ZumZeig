@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.zumzeig.R
 
+// Define the BistrotFragment class
 class BistrotFragment : Fragment() {
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

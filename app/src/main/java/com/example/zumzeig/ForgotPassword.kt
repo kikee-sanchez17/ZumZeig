@@ -60,11 +60,11 @@ class ForgotPassword : AppCompatActivity() {
                 Request.Method.POST, url, params,
                 Response.Listener<String> { response ->
                     // Log response for debugging
-                    Log.d("Response", response)
+                    //Log.d("Response", response)
 
                     // Show response message in toast
                     val lastWord = response.substringAfterLast(" ")
-                    Toast.makeText(this, lastWord, Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this, lastWord, Toast.LENGTH_LONG).show()
 
                     // Handle response
                     try {

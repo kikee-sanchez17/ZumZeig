@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.zumzeig.R
 
-
+// Fragment representing the School section
 class SchoolFragment : Fragment() {
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -29,7 +29,7 @@ class HomeFragment : Fragment() {
     private lateinit var queue: RequestQueue
     var events = mutableListOf<Event>()
 
-
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    // Initialize the fragment view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.RecyclerOne)
@@ -48,15 +49,15 @@ class HomeFragment : Fragment() {
             Response.Listener { response ->
                 try {
                     events.clear()
-                    // Parsear la respuesta JSON a una lista de objetos Event
+                    // Parse the JSON response into a list of Event objects
                     val gson = Gson()
                     val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
 
-                    // Manejar la lista de eventos
+                    // Handle the list of events
                     for (event in eventsArray) {
                         events.add(event)
 
-                        // Aquí puedes crear objetos Event y hacer lo que necesites con ellos
+                        // Here you can create Event objects and do whatever you need with them
                     }
                     initRecyclerView()
 
@@ -65,14 +66,15 @@ class HomeFragment : Fragment() {
                 }
             },
             Response.ErrorListener { error ->
-                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+                //Log.e("Error", "Failed to make request: ${error.message}")
             }
         )
 
-        // Añadir la solicitud a la cola de solicitudes
+        // Add the request to the request queue
         queue.add(stringRequest)
     }
 
+    // Initialize the RecyclerView
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         eventAdapter = EventAdapter(events)

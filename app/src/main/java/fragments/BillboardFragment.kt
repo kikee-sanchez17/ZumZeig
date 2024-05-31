@@ -26,15 +26,16 @@ import network.MyStringRequest
 import org.json.JSONException
 import utils.OnEventClickListener
 
-class BillboardFragment (private val fragmentManager: FragmentManager): Fragment(),OnEventClickListener {
+class BillboardFragment (private val fragmentManager: FragmentManager): Fragment(), OnEventClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventBillboardAdapter: EventBillboardAdapter
     var events = mutableListOf<Event>()
     private var url: String = "https://enricsanchezmontoya.cat/zumzeig/fragmenthome.php"
     private var urlsave: String = "https://enricsanchezmontoya.cat/zumzeig/saveevent.php"
-    private lateinit  var queue: RequestQueue
+    private lateinit var queue: RequestQueue
     private lateinit var sharedPreferences: SharedPreferences
 
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,10 +43,12 @@ class BillboardFragment (private val fragmentManager: FragmentManager): Fragment
     ): View? {
         return inflater.inflate(R.layout.fragment_billboard, container, false)
     }
+
+    // Initialize the fragment view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = view.findViewById(R.id.RecyclerTwo)
-        queue=Volley.newRequestQueue(requireContext())
+        queue = Volley.newRequestQueue(requireContext())
         sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
 
         val getAllEvents = StringRequest(
@@ -53,15 +56,15 @@ class BillboardFragment (private val fragmentManager: FragmentManager): Fragment
             Response.Listener { response ->
                 try {
                     events.clear()
-                    // Parsear la respuesta JSON a una lista de objetos Event
+                    // Parse the JSON response into a list of Event objects
                     val gson = Gson()
                     val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
 
-                    // Manejar la lista de eventos
+                    // Handle the list of events
                     for (event in eventsArray) {
                         events.add(event)
 
-                        // Aquí puedes crear objetos Event y hacer lo que necesites con ellos
+                        // Here you can create Event objects and do whatever you need with them
                     }
                     initRecyclerView()
 
@@ -70,53 +73,49 @@ class BillboardFragment (private val fragmentManager: FragmentManager): Fragment
                 }
             },
             Response.ErrorListener { error ->
-                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+                //Log.e("Error", "Failed to make request: ${error.message}")
             }
         )
 
-        // Añadir la solicitud a la cola de solicitudes
+        // Add the request to the request queue
         queue.add(getAllEvents)
-
     }
+
+    // Initialize the RecyclerView
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
-        eventBillboardAdapter = EventBillboardAdapter(requireContext(),events,this,)
+        eventBillboardAdapter = EventBillboardAdapter(requireContext(), events, this)
         recyclerView.adapter = eventBillboardAdapter
     }
 
-    override fun onEventClick(eventId: Int) {
-
-        val idUser =sharedPreferences.getString("user_ID","false").toString()
+    // Handle click on the save icon
+    override fun onSaveIconClick(eventId: Int) {
+        val idUser = sharedPreferences.getString("user_ID", "false").toString()
         val params = mapOf(
             "idEvent" to eventId.toString(),
             "idUser" to idUser
         )
         val saveEvent = MyStringRequest(
-            Request.Method.POST, urlsave,params,
+            Request.Method.POST, urlsave, params,
             Response.Listener { response ->
-                Log.d("saveevent",response + eventId+" "+idUser)
-                if(response=="Event saved successfully.") {
+                //Log.d("saveevent", response + eventId + " " + idUser)
+                if (response == "Event saved successfully.") {
                     Toast.makeText(requireContext(), "Event saved successfully.", Toast.LENGTH_LONG).show()
-
-                }else if(response=="Event is already saved."){
+                } else if (response == "Event is already saved.") {
                     Toast.makeText(requireContext(), response, Toast.LENGTH_LONG).show()
-
-                }else{
+                } else {
                     Toast.makeText(requireContext(), response, Toast.LENGTH_LONG).show()
                 }
             },
             Response.ErrorListener { error ->
-                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+                //Log.e("Error", "Failed to make request: ${error.message}")
             }
         )
         queue.add(saveEvent)
-
-
-
     }
 
-    override fun onSaveIconClick(eventId: Int) {
-        FunctionUtility().loadFragment(fragmentManager,EventFragment(eventId),true)
+    // Handle click on the event item
+    override fun onEventClick(eventId: Int) {
+        FunctionUtility().loadFragment(fragmentManager, EventFragment(eventId), true)
     }
-
 }

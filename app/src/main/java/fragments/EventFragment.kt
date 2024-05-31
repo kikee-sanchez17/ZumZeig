@@ -39,9 +39,8 @@ class EventFragment(private val eventId: Int) : Fragment() {
     private lateinit var aFilmByTextView: TextView
     private lateinit var festivalAwardsTextView: TextView
     private lateinit var accompaniedSessionsTextView: TextView
-    private lateinit var eventTypeNameTextView: TextView
-    private lateinit var eventDatesTextView: TextView
 
+    // Inflate the layout for this fragment
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,6 +49,7 @@ class EventFragment(private val eventId: Int) : Fragment() {
         return inflater.inflate(R.layout.fragment_event, container, false)
     }
 
+    // Initialize the fragment view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Toast.makeText(requireContext(), eventId.toString(), Toast.LENGTH_LONG).show()
@@ -71,11 +71,12 @@ class EventFragment(private val eventId: Int) : Fragment() {
         aFilmByTextView = view.findViewById(R.id.aFilmByTextView)
         festivalAwardsTextView = view.findViewById(R.id.festivalAwardsTextView)
         accompaniedSessionsTextView = view.findViewById(R.id.accompaniedSessionsTextView)
-        eventDatesTextView = view.findViewById(R.id.eventDatesTextView)
 
+        // Fetch event data from the server
         fetchEventData()
     }
 
+    // Function to fetch event data from the server
     private fun fetchEventData() {
         val params = mapOf(
             "idEvent" to eventId.toString()
@@ -87,9 +88,10 @@ class EventFragment(private val eventId: Int) : Fragment() {
             Response.Listener { response ->
                 try {
                     val jsonArray = JSONObject(response).getJSONArray("data")
-                    Log.d("eventinfo",response)
+                    //Log.d("eventinfo",response)
                     if (jsonArray.length() > 0) {
                         val event = jsonArray.getJSONObject(0)
+                        // Bind fetched event data to views
                         bindEventData(event)
                     }
                 } catch (e: JSONException) {
@@ -97,13 +99,14 @@ class EventFragment(private val eventId: Int) : Fragment() {
                 }
             },
             Response.ErrorListener { error ->
-                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
+                //Log.e("Error", "Failed to make request: ${error.message}")
             }
         )
 
         queue.add(getAllEvents)
     }
 
+    // Function to bind event data to views
     private fun bindEventData(event: JSONObject) {
         titleTextView.text = event.getString("title")
         directorTextView.text = event.getString("director")
@@ -120,25 +123,23 @@ class EventFragment(private val eventId: Int) : Fragment() {
         aFilmByTextView.text = event.getString("a_film_by")
         festivalAwardsTextView.text = event.getString("festival_awards")
         accompaniedSessionsTextView.text = event.getString("accompanied_sessions")
-        eventDatesTextView.text = event.getString("eventDates")
 
-        checkAndSetVisibility(titleTextView, event.getString("title"),getString(R.string.event_title))
-        checkAndSetVisibility(directorTextView, event.getString("director"),getString(R.string.event_director))
-        checkAndSetVisibility(introductionTextView, event.getString("introduction"),getString(R.string.event_introduction))
-        checkAndSetVisibility(synopsisTextView, event.getString("synopsis"),getString(R.string.event_synopsis))
-        checkAndSetVisibility(trailerTextView, event.getString("trailer"),getString(R.string.event_trailer))
-        checkAndSetVisibility(originalTitleTextView, event.getString("original_title"),getString(R.string.event_original_title))
-        checkAndSetVisibility(yearTextView, event.getString("year"),getString(R.string.event_year))
-        checkAndSetVisibility(durationTextView, event.getString("duration"),getString(R.string.event_duration))
-        checkAndSetVisibility(countryTextView, event.getString("country"),getString(R.string.event_country))
-        checkAndSetVisibility(languageTextView, event.getString("language"),getString(R.string.event_language))
-        checkAndSetVisibility(versionTextView, event.getString("version"),getString(R.string.event_version))
-        checkAndSetVisibility(ratingTextView, event.getString("rating"),getString(R.string.event_rating))
-        checkAndSetVisibility(aFilmByTextView, event.getString("a_film_by"),getString(R.string.event_a_film_by))
-        checkAndSetVisibility(festivalAwardsTextView, event.getString("festival_awards"),getString(R.string.event_festival_awards))
-        checkAndSetVisibility(accompaniedSessionsTextView, event.getString("accompanied_sessions"),getString(R.string.event_accompanied_sessions))
-        checkAndSetVisibility(eventTypeNameTextView, event.getString("eventTypeName"),getString(R.string.event_type_name))
-        checkAndSetVisibility(eventDatesTextView, event.getString("eventDates"),getString(R.string.event_dates))
+        // Check visibility of each text view and set its value
+        checkAndSetVisibility(titleTextView, event.getString("title"), getString(R.string.event_title))
+        checkAndSetVisibility(directorTextView, event.getString("director"), getString(R.string.event_director))
+        checkAndSetVisibility(introductionTextView, event.getString("introduction"), getString(R.string.event_introduction))
+        checkAndSetVisibility(synopsisTextView, event.getString("synopsis"), getString(R.string.event_synopsis))
+        checkAndSetVisibility(trailerTextView, event.getString("trailer"), getString(R.string.event_trailer))
+        checkAndSetVisibility(originalTitleTextView, event.getString("original_title"), getString(R.string.event_original_title))
+        checkAndSetVisibility(yearTextView, event.getString("year"), getString(R.string.event_year))
+        checkAndSetVisibility(durationTextView, event.getString("duration"), getString(R.string.event_duration))
+        checkAndSetVisibility(countryTextView, event.getString("country"), getString(R.string.event_country))
+        checkAndSetVisibility(languageTextView, event.getString("language"), getString(R.string.event_language))
+        checkAndSetVisibility(versionTextView, event.getString("version"), getString(R.string.event_version))
+        checkAndSetVisibility(ratingTextView, event.getString("rating"), getString(R.string.event_rating))
+        checkAndSetVisibility(aFilmByTextView, event.getString("a_film_by"), getString(R.string.event_a_film_by))
+        checkAndSetVisibility(festivalAwardsTextView, event.getString("festival_awards"), getString(R.string.event_festival_awards))
+        checkAndSetVisibility(accompaniedSessionsTextView, event.getString("accompanied_sessions"), getString(R.string.event_accompanied_sessions))
 
         // Populate viewPager with image URLs
         val images = event.getJSONArray("images")
@@ -146,15 +147,16 @@ class EventFragment(private val eventId: Int) : Fragment() {
         for (i in 0 until images.length()) {
             imageUrls.add(images.getString(i))
         }
-        val adapter = ImageSliderAdapter(requireContext(),imageUrls)
+        val adapter = ImageSliderAdapter(requireContext(), imageUrls)
         viewPager.adapter = adapter
     }
 
-    private fun checkAndSetVisibility(textView: TextView, value: String,info:String) {
+    // Function to check visibility of text view and set its value accordingly
+    private fun checkAndSetVisibility(textView: TextView, value: String, info: String) {
         if (value == "null") {
             textView.visibility = View.GONE
         } else {
-            textView.text = info+": "+value
+            textView.text = "$info: $value"
         }
     }
 }

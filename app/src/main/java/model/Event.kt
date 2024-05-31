@@ -19,8 +19,6 @@ data class Event(
         return Event_ID
     }
 
-
-
     // Getter y Setter para title
     fun gettTitle(): String {
         return title
