@@ -18,3 +18,4 @@ class SchoolFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_school, container, false)
     }
 }
+

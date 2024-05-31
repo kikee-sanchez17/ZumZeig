@@ -18,3 +18,4 @@ class RentalFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_rental, container, false)
     }
 }
+

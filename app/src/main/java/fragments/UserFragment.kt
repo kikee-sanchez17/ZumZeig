@@ -97,4 +97,5 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
             updateUI()  // Update UI after fetching new data
         }
     }
+
 }

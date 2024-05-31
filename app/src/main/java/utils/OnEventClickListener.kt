@@ -8,3 +8,4 @@ interface OnEventClickListener {
     // Method called when the save icon of an event is clicked
     fun onSaveIconClick(eventId: Int)
 }
+

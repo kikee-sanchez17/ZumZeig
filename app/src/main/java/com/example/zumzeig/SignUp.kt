@@ -158,3 +158,4 @@ class SignUp : AppCompatActivity() {
         queue.add(stringRequest)
     }
 }
+

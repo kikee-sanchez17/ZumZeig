@@ -36,3 +36,4 @@ class ImageSliderAdapter(private val context: Context, private val imageUrls: Li
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
     }
 }
+

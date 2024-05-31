@@ -81,3 +81,4 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = eventAdapter
     }
 }
+

@@ -51,3 +51,4 @@ class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 }
+

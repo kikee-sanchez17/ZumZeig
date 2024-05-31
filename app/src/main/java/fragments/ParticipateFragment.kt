@@ -20,3 +20,4 @@ class ParticipateFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_participate, container, false)
     }
 }
+

@@ -18,3 +18,4 @@ class BistrotFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_bistrot, container, false)
     }
 }
+

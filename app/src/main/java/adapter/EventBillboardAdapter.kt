@@ -35,3 +35,4 @@ class EventBillboardAdapter(
     // Return the total number of items in the list
     override fun getItemCount(): Int = events.size
 }
+

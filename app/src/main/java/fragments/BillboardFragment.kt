@@ -119,3 +119,4 @@ class BillboardFragment (private val fragmentManager: FragmentManager): Fragment
         FunctionUtility().loadFragment(fragmentManager, EventFragment(eventId), true)
     }
 }
+

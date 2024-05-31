@@ -34,3 +34,4 @@ class EventAdapter(val events: List<Event>) : RecyclerView.Adapter<EventViewHold
         holder.render(item)
     }
 }
+

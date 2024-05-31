@@ -160,3 +160,4 @@ class EventFragment(private val eventId: Int) : Fragment() {
         }
     }
 }
+

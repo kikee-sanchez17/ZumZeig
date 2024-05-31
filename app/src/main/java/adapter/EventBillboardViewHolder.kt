@@ -121,3 +121,4 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
         queue.add(saveEvent)
     }
 }
+
