@@ -14,6 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import fragments.BillboardFragment
 import fragments.BistrotFragment
+import fragments.BillboardFragment
 import fragments.CalendarFragment
 import fragments.HomeFragment
 import fragments.InformacioStatic
@@ -44,6 +45,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navigationView.setNavigationItemSelectedListener(this)
+                R.id.navHome -> loadFragment(HomeFragment(), false)
+                R.id.navCalendar -> loadFragment(CalendarFragment(), false)
+                R.id.navSaved -> loadFragment(SavedFragment(), false)
+                else -> loadFragment(BillboardFragment(supportFragmentManager), false) // nav Profile
+            }
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item: MenuItem ->
             when (item.itemId) {

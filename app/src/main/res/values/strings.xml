@@ -120,6 +120,7 @@
     <string name="userEmailTv">Correu electrònic</string>
     <!-- end Profile Fragments-->
 
+
     <!-- Menu lateral-->
     <string name="navigation_drawer_open">Obrir menú de navegació</string>
     <string name="navigation_drawer_close">Tancar menú de navegació</string>
@@ -157,5 +158,16 @@
     <string name="birthdayUser">Data de Naixement: </string>
     <string name="phoneNumberUser">Número de Telèfon: </string>
     <!-- end Profile Info Fragment-->
+
+
+    <!-- Profile Info Fragment-->
+    <string name="nameUser">Name: </string>
+    <string name="lastNameUser">Last Name: </string>
+    <string name="countryUser">Country: </string>
+    <string name="postalCodeUser">Postal Code: </string>
+    <string name="birthdayUser">Birthday: </string>
+    <string name="phoneNumberUser">Phone Number: </string>
+
+    <!-- end Profile Info Fragments-->
 
 </resources>

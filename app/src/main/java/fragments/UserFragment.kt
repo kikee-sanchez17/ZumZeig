@@ -51,6 +51,7 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
         sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
 
         FunctionUtility().checkUserLoggedIn(requireContext(),sharedPreferences){
+
             updateUI()
 
             logOutBtn.setOnClickListener {
@@ -84,10 +85,49 @@ class UserFragment(private val fragmentManager: FragmentManager) : Fragment() {
         requireActivity().finish()
     }
 
+
+        updateUI()
+
+        logOutBtn.setOnClickListener {
+            logOut()
+        }
+
+        userInfoBtn.setOnClickListener {
+            FunctionUtility().loadFragment(
+                fragmentManager,
+                ProfileInfoFragment(fragmentManager),
+                false
+            )
+        }
+        }
+    }
+
+
+
+    private fun updateUI() {
+        emailUserTv.text = sharedPreferences.getString("email", "false")
+        nameUserTv.text = sharedPreferences.getString("name", "false")
+    }
+
+    private fun logOut() {
+        Toast.makeText(requireContext(), "logged out", Toast.LENGTH_LONG).show()
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply()
+        val intent = Intent(requireContext(), Login::class.java)
+        startActivity(intent)
+        requireActivity().finish()
+    }
+
+
     fun refreshUserInfo() {
         val emailUser: String = sharedPreferences.getString("email", "false").toString()
         FunctionUtility().getUserInfoAndUpdateSharedPreferences(emailUser, queue, sharedPreferences) {
             updateUI()  // Update UI after fetching new data
         }
     }
+
 }
+
+}
+

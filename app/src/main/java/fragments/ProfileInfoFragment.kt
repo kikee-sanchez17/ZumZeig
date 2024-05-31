@@ -61,6 +61,7 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
 
         nameTextView.text = getString(R.string.nameUser) + " " + (sharedPreferences.getString("name", null) ?: "-")
         lastNameTextView.text = getString(R.string.lastNameUser) + " " + (sharedPreferences.getString("last_name", null) ?: "-")
+
         if(sharedPreferences.getString("country","false").toString()=="null"){
             countryTextView.text = getString(R.string.countryUser) + " -"
 
@@ -89,6 +90,11 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
             phoneNumberTextView.text = getString(R.string.phoneNumberUser) + " " + sharedPreferences.getString("phone_number", "false").toString()
 
         }
+
+        countryTextView.text = getString(R.string.countryUser) + " " + (sharedPreferences.getString("country", "-") ?: "-")
+        postalCodeTextView.text = getString(R.string.postalCodeUser) + " " + (sharedPreferences.getString("postal_code", "-") ?: "-")
+        birthdayTextView.text = getString(R.string.birthdayUser) + " " + (sharedPreferences.getString("birthday", "-") ?: "-")
+        phoneNumberTextView.text = getString(R.string.phoneNumberUser) + " " + (sharedPreferences.getString("phone_number", "-") ?: "-")
 
         editButton.setOnClickListener {
             nameEditText.visibility = View.VISIBLE
@@ -159,7 +165,11 @@ class ProfileInfoFragment(private val fragmentManager: FragmentManager) : Fragme
                     Toast.makeText(requireContext(), "Error updating profile", Toast.LENGTH_LONG).show()
                 },
 
+
                 )
+
+            )
+
             queue.add(stringRequest)
         }
     }

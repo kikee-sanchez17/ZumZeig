@@ -62,6 +62,9 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
                 // Este bloque solo se ejecuta si el usuario está logueado
                 listener.onSaveIconClick(eventModel.Event_ID)
                 imageButton.setImageResource(R.drawable.saveblacktotal)
+
+                listener.onEventClick(eventModel.Event_ID)
+                imageButton.setImageResource(R.drawable.icon_save_filled)
             }
         }
         eventBoxCL.setOnClickListener {

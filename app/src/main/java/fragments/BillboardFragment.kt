@@ -26,7 +26,11 @@ import network.MyStringRequest
 import org.json.JSONException
 import utils.OnEventClickListener
 
+
 class BillboardFragment (private val fragmentManager: FragmentManager): Fragment(),OnEventClickListener {
+
+class BillboardFragment(private val fragmentManager: FragmentManager) : Fragment(),OnEventClickListener {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventBillboardAdapter: EventBillboardAdapter
     var events = mutableListOf<Event>()
@@ -84,7 +88,7 @@ class BillboardFragment (private val fragmentManager: FragmentManager): Fragment
         recyclerView.adapter = eventBillboardAdapter
     }
 
-    override fun onEventClick(eventId: Int) {
+    override fun onSaveIconClick(eventId: Int) {
 
         val idUser =sharedPreferences.getString("user_ID","false").toString()
         val params = mapOf(
@@ -115,8 +119,12 @@ class BillboardFragment (private val fragmentManager: FragmentManager): Fragment
 
     }
 
+
     override fun onSaveIconClick(eventId: Int) {
         FunctionUtility().loadFragment(fragmentManager,EventFragment(eventId),true)
+
+    override fun onEventClick(eventId: Int) {
+
     }
 
 }
