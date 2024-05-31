@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:title="Zumzeig" />
+    <item
+        android:id="@+id/nav_billboard"
+        android:title="Cartelera" />
+    <item
+        android:id="@+id/nav_calendar"
+        android:title="Calendari" />
+    <item
+        android:id="@+id/nav_info"
+        android:title="Informació" />
+    <item
+        android:id="@+id/nav_perfil"
+        android:title="Perfil" />
+    <item
+        android:id="@+id/nav_participate"
+        android:title="Participa" />
+    <item
+        android:id="@+id/nav_school"
+        android:title="Escola" />
+    <item
+        android:id="@+id/nav_rental"
+        android:title="Lloger" />
+    <item
+        android:id="@+id/nav_bistrot"
+        android:title="Bistrot" />
+</menu>

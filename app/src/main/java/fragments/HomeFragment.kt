@@ -47,6 +47,7 @@ class HomeFragment : Fragment() {
             Request.Method.GET, url,
             Response.Listener { response ->
                 try {
+                    events.clear()
                     // Parsear la respuesta JSON a una lista de objetos Event
                     val gson = Gson()
                     val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)

@@ -2,50 +2,50 @@
 <resources>
     <string name="app_name">ZumZeig</string>
     <!-- Sign Up -->
-    <string name="newAccount">NEW ACCOUNT</string>
-    <string name="name">Name</string>
-    <string name="lastName">Last name</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="repeatPassword">Repeat password</string>
-    <string name="signUp">SIGN UP</string>
-    <string name="alreadySignUp">Already Sign up? Login</string>
+    <string name="newAccount">NOU COMPTE</string>
+    <string name="name">Nom</string>
+    <string name="lastName">Cognom</string>
+    <string name="email">Correu electrònic</string>
+    <string name="password">Contrasenya</string>
+    <string name="repeatPassword">Repetir contrasenya</string>
+    <string name="signUp">REGISTRAR-SE</string>
+    <string name="alreadySignUp">Ja tens compte? Inicia sessió</string>
     <!-- end Sign Up -->
 
     <!-- Login -->
-    <string name="loginText">LOGIN</string>
-    <string name="textContinue">Sign in to continue</string>
-    <string name="textNoAccount">Do not have an account yet? Sign up</string>
-    <string name="loginForgotPassword">Forgot Password?</string>
-    <string name="login">LOGIN</string>
+    <string name="loginText">INICIAR SESSIÓ</string>
+    <string name="textContinue">Inicia sessió per continuar</string>
+    <string name="textNoAccount">Encara no tens compte? Registra`t</string>
+    <string name="loginForgotPassword">Has oblidat la contrasenya?</string>
+    <string name="login">INICIAR SESSIÓ</string>
     <!-- end Login -->
 
     <!-- Enric -->
     <string name="error_title">ERROR</string>
-    <string name="error_message">Passwords do not match</string>
-    <string name="accept_button">Accept</string>
-    <string name="invalid_email">Email is not valid</string>
-    <string name="short_password">Password must contain at least 6 characters</string>
+    <string name="error_message">Les contrasenyes no coincideixen</string>
+    <string name="accept_button">Acceptar</string>
+    <string name="invalid_email">El correu electrònic no és vàlid</string>
+    <string name="short_password">La contrasenya ha de contenir almenys 6 caràcters</string>
     <!-- end Enric -->
 
     <!-- Forgot password -->
-    <string name="fpText">CHANGE PASSWORD</string>
-    <string name="fpTextsubtitle">Enter your email address to receive a code to reset your password</string>
-    <string name="send">SEND</string>
+    <string name="fpText">CANVIAR CONTRASENYA</string>
+    <string name="fpTextsubtitle">Introdueix la teva adreça de correu electrònic per rebre un codi per restablir la teva contrasenya</string>
+    <string name="send">ENVIAR</string>
     <!-- end Forgot password -->
 
     <!-- New password -->
-    <string name="fp2Text">RESET YOUR PASSWORD</string>
-    <string name="fp2Textsubtitle">Here you can set a new password for your Zumzeig account</string>
-    <string name="code">Code</string>
+    <string name="fp2Text">RESTABLIR LA TEVA CONTRASENYA</string>
+    <string name="fp2Textsubtitle">Aquí pots establir una nova contrasenya per al teu compte Zumzeig</string>
+    <string name="code">Codi</string>
     <!-- end New password -->
 
     <!-- Fragments-->
-    <string name="home_fragment">Home fragment</string>
-    <string name="calendar_fragment">Calendar fragment</string>
-    <string name="saved_fragment">Saved fragment</string>
-    <string name="user_fragment">User fragment</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Fragment d`inici</string>
+    <string name="calendar_fragment">Fragment del calendari</string>
+    <string name="saved_fragment">Fragment desat</string>
+    <string name="user_fragment">Fragment d`usuari</string>
+    <string name="hello_blank_fragment">Hola fragment buit</string>
     <!-- end Fragments-->
 
     <!-- Information Static -->
@@ -59,11 +59,7 @@
     <!-- end Què fem Static -->
 
     <!-- Historia Static -->
-
-    <string name="historyText">Historia</string>
-
-    <string name="historyText">Què fem</string>
-
+    <string name="historyText">Història</string>
     <string name="descriptionHisText">Esteban Bernatas Chassaigne, amant entusiasta del setè art i activista cultural compromès amb la realitat contemporània, va fundar Zumzeig Cinema l’octubre de 2013 proposant, amb la infatigable ajuda de Guillaume Mariès i David Dorado, un model d’exhibició innovador a Espanya. Situat a les àmplies perifèries de la indústria, va apostar pel cinema independent, donant veu a opcions que tenen menor comercialització provinents de diverses corrents contemporànies actuals. Això va donar lloc a una sala que es va guanyar el reconeixement i simpatia de gran part de la comunitat cinèfila del país per la qualitat de la programació i la seva vocació activista.</string>
     <string name="btnVeureMesHis">Veure més</string>
     <string name="moreTextHis">A la primavera de 2016, Esteban i el seu equip van voler fer un pas al costat per fer possible una renovació del model que permetés enfocar-ho des d’una vessant encara més social. L’objectiu era mantenir una programació valenta, puntera i compromesa, tot creant un model de participació democràtica i popular, que tingués un major impacte del cinema en el seu entorn.</string>
@@ -112,19 +108,54 @@
     <string name="moreTextEduAc">Establim relacions amb les escoles, instituts i casals. Oferim sessions, tallers i altres activitats en horari lectiu pensades per als més joves i que fomenten l’educació en el lleure i la reflexió sobre la imatge. Oferta pedagògica disponible pròximamament.</string>
     <string name="btnVeureMenysEduAc">Veure menys</string>
     <!-- end Activitats educatives Static-->
-
     <!-- end Information Static-->
 
-
     <!-- Profile Fragments-->
-    <string name="infoBtn">My info</string>
-    <string name="changePasswordBtn">Change Password</string>
-    <string name="feesBtn">Fees</string>
-    <string name="legal_notesBtn">Legal Notes</string>
-    <string name="logOutBtn">Log Out</string>
-    <string name="userNameTv">Name</string>
-    <string name="userEmailTv">Email</string>
-
+    <string name="infoBtn">La meva informació</string>
+    <string name="changePasswordBtn">Canviar contrasenya</string>
+    <string name="feesBtn">Quotes</string>
+    <string name="legal_notesBtn">Notes legals</string>
+    <string name="logOutBtn">Tancar sessió</string>
+    <string name="userNameTv">Nom</string>
+    <string name="userEmailTv">Correu electrònic</string>
     <!-- end Profile Fragments-->
+
+    <!-- Menu lateral-->
+    <string name="navigation_drawer_open">Obrir menú de navegació</string>
+    <string name="navigation_drawer_close">Tancar menú de navegació</string>
+    <string name="school_fragment">Fragment escola</string>
+    <string name="rental_fragment">Fragment de lloguer</string>
+    <string name="participe_fragment">Fragment de participa</string>
+    <string name="bistrot_fragment">Fragment de bistrot</string>
+    <!-- end Menu lateral-->
+
+    <!-- Event Details Strings -->
+    <string name="event_title">Títol</string>
+    <string name="event_director">Director</string>
+    <string name="event_introduction">Introducció</string>
+    <string name="event_synopsis">Sinopsi</string>
+    <string name="event_trailer">Tràiler</string>
+    <string name="event_original_title">Títol Original</string>
+    <string name="event_year">Any</string>
+    <string name="event_duration">Durada</string>
+    <string name="event_country">País</string>
+    <string name="event_language">Llengua</string>
+    <string name="event_version">Versió</string>
+    <string name="event_rating">Classificació</string>
+    <string name="event_a_film_by">Una pel·lícula de</string>
+    <string name="event_festival_awards">Premis de Festivals</string>
+    <string name="event_accompanied_sessions">Sessions Acompanyades</string>
+    <string name="event_type_name">Tipus d`Esdeveniment</string>
+    <string name="event_dates">Dates de l`Esdeveniment</string>
+    <!-- end Event Details Strings -->
+
+    <!-- Profile Info Fragment-->
+    <string name="nameUser">Nom: </string>
+    <string name="lastNameUser">Cognom: </string>
+    <string name="countryUser">País: </string>
+    <string name="postalCodeUser">Codi Postal: </string>
+    <string name="birthdayUser">Data de Naixement: </string>
+    <string name="phoneNumberUser">Número de Telèfon: </string>
+    <!-- end Profile Info Fragment-->
 
 </resources>

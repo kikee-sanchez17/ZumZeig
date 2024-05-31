@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -19,6 +20,7 @@ import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.example.zumzeig.Login
 import com.example.zumzeig.R
+import libraries.FunctionUtility
 import model.Event
 import network.MyStringRequest
 import org.json.JSONObject
@@ -32,7 +34,7 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
     private lateinit  var queue: RequestQueue
     val imageButton: ImageButton = view.findViewById(R.id.saveBtn)
     private lateinit var sharedPreferences: SharedPreferences
-
+    val eventBoxCL : ConstraintLayout = view.findViewById(R.id.eventBox)
     @RequiresApi(Build.VERSION_CODES.O)
     fun render(eventModel: Event) {
         isSaved(eventModel)
@@ -40,17 +42,31 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
         titleEvent.text = eventModel.title
         director.text = eventModel.director
         fecha.text = "${eventModel.getDateZ()} ${eventModel.getTime()}"
+
+        if(eventModel.eventTypeName=="Paralelas"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleParalelas);
+        }else if(eventModel.eventTypeName=="Estrenos"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleEstrenos);
+        }else if(eventModel.eventTypeName=="Infantil"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleInfantil);
+        }else if(eventModel.eventTypeName=="Experimental"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleExperimental);
+        }else if(eventModel.eventTypeName=="Festivales y ciclos"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleFestivales);
+        }else if(eventModel.eventTypeName=="Noticia"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleNoticia);
+        }
+
         imageButton.setOnClickListener {
-            if (sharedPreferences.getString("logged", "false") == "false") {
-                val intent = Intent(context, Login::class.java)
-                context.startActivity(intent)
-                // Si deseas cerrar la actividad actual después de iniciar la actividad de inicio de sesión,
-                // puedes usar (context as AppCompatActivity).finish() en lugar de requireActivity().finish().
-                (context as AppCompatActivity).finish()
-            } else {
-                listener.onEventClick(eventModel.Event_ID)
-                imageButton.setImageResource(R.drawable.icon_save_filled)
+            FunctionUtility().checkUserLoggedIn(context, sharedPreferences) {
+                // Este bloque solo se ejecuta si el usuario está logueado
+                listener.onSaveIconClick(eventModel.Event_ID)
+                imageButton.setImageResource(R.drawable.saveblacktotal)
             }
+        }
+        eventBoxCL.setOnClickListener {
+            listener.onEventClick(eventModel.Event_ID)
+
         }
     }
     fun isSaved(eventModel: Event) {
@@ -62,6 +78,9 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
             "idEvent" to idEvent.toString(),
             "idUser" to idUser
         )
+
+
+
         var urlsave = "https://enricsanchezmontoya.cat/zumzeig/check_event_saved.php"
         val saveEvent = MyStringRequest(
             Request.Method.POST, urlsave,params,
@@ -71,7 +90,8 @@ class EventBillboardViewHolder(view: View, private val listener: OnEventClickLis
                     val jsonResponse = JSONObject(response)
                     val isSaved = jsonResponse.getBoolean("isSaved")
                     if(isSaved){
-                        imageButton.setImageResource(R.drawable.icon_save_filled)
+                        imageButton.setImageResource(R.drawable.saveblacktotal)
+
                     }
                 } catch (e: Exception) {
                     e.printStackTrace()

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -19,12 +20,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.zumzeig.R
 import com.google.gson.Gson
+import libraries.FunctionUtility
 import model.Event
 import network.MyStringRequest
 import org.json.JSONException
 import utils.OnEventClickListener
 
-class BillboardFragment : Fragment(),OnEventClickListener {
+class BillboardFragment (private val fragmentManager: FragmentManager): Fragment(),OnEventClickListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventBillboardAdapter: EventBillboardAdapter
     var events = mutableListOf<Event>()
@@ -50,6 +52,7 @@ class BillboardFragment : Fragment(),OnEventClickListener {
             Request.Method.GET, url,
             Response.Listener { response ->
                 try {
+                    events.clear()
                     // Parsear la respuesta JSON a una lista de objetos Event
                     val gson = Gson()
                     val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
@@ -110,6 +113,10 @@ class BillboardFragment : Fragment(),OnEventClickListener {
 
 
 
+    }
+
+    override fun onSaveIconClick(eventId: Int) {
+        FunctionUtility().loadFragment(fragmentManager,EventFragment(eventId),true)
     }
 
 }

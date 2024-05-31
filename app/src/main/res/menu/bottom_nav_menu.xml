@@ -6,23 +6,23 @@
         android:icon="?attr/homeSrc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="home" />
+        android:title="Inici" />
     <item
         android:id="@+id/navCalendar"
         android:icon="?attr/calendarSrc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="calendar" />
+        android:title="Cartelera" />
     <item
         android:id="@+id/navSaved"
         android:icon="?attr/savedSrc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="saved" />
+        android:title="Guardats" />
     <item
         android:id="@+id/navUser"
         android:icon="?attr/userSrc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="user" />
+        android:title="Usuari" />
 </menu>

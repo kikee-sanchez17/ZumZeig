@@ -28,5 +28,18 @@ class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         director.text = eventModel.director
         fecha.text = eventModel.getDateZ()
         hora.text = eventModel.getTime()
+        if(eventModel.eventTypeName=="Paralelas"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleParalelas);
+        }else if(eventModel.eventTypeName=="Estrenos"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleEstrenos);
+        }else if(eventModel.eventTypeName=="Infantil"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleInfantil);
+        }else if(eventModel.eventTypeName=="Experimental"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleExperimental);
+        }else if(eventModel.eventTypeName=="Festivales y ciclos"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleFestivales);
+        }else if(eventModel.eventTypeName=="Noticia"){
+            titleEvent.setTextAppearance(R.style.titleCarteleraStyleNoticia);
+        }
     }
 }

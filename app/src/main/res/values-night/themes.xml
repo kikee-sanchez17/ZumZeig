@@ -7,7 +7,7 @@
         <item name="imageSrc">@drawable/zumzeig</item>
         <item name="homeSrc">@drawable/homeiconwhite</item>
         <item name="calendarSrc">@drawable/calendariconwhite</item>
-        <item name="savedSrc">@drawable/saveiconwhite</item>
+        <item name="savedSrc">@drawable/savewhite</item>
         <item name="userSrc">@drawable/usericonwhite</item>
     </style>
 

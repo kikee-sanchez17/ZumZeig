@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -35,7 +36,7 @@ class SavedFragment : Fragment(), OnEventClickListener {
     private lateinit var queue: RequestQueue
     private lateinit var imageButton: ImageButton
     private lateinit var sharedPreferences: SharedPreferences
-
+    private lateinit var noEventsTextView: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,61 +49,66 @@ class SavedFragment : Fragment(), OnEventClickListener {
         super.onViewCreated(view, savedInstanceState)
         sharedPreferences = requireContext().getSharedPreferences("UserInfo", AppCompatActivity.MODE_PRIVATE)
         Log.d("tete",sharedPreferences.getString("logged","false").toString())
-
+        noEventsTextView = view.findViewById(R.id.NoEventsSavedTV)
         if(sharedPreferences.getString("logged","false").equals("false")){
             val intent= Intent(requireActivity(), Login::class.java)
             startActivity(intent)
             requireActivity().finish()
-        }else{
+        } else {
+            recyclerView = view.findViewById(R.id.RecyclerTwo)
+            queue = Volley.newRequestQueue(requireContext())
+            val id = sharedPreferences.getString("user_ID", "false").toString()
+            val allFields: Map<String, *> = sharedPreferences.all
 
-        recyclerView = view.findViewById(R.id.RecyclerTwo)
-        queue = Volley.newRequestQueue(requireContext())
-        val id =sharedPreferences.getString("user_ID","false").toString()
-        val allFields: Map<String, *> = sharedPreferences.all
+            // Creamos un StringBuilder para construir el string resultante
+            val stringBuilder = StringBuilder()
 
-        // Creamos un StringBuilder para construir el string resultante
-        val stringBuilder = StringBuilder()
-
-        // Iteramos sobre todos los campos y los agregamos al StringBuilder
-        for ((key, value) in allFields) {
-            stringBuilder.append("$key: $value\n")
-        }
-        Log.d("infouser",stringBuilder.toString())
-        val params = mapOf(
-            "id" to id,
-        )
+            // Iteramos sobre todos los campos y los agregamos al StringBuilder
+            for ((key, value) in allFields) {
+                stringBuilder.append("$key: $value\n")
+            }
+            Log.d("infouser", stringBuilder.toString())
+            val params = mapOf(
+                "id" to id,
+            )
             val urlWithParams = url + "?" + params.map { "${it.key}=${it.value}" }.joinToString("&")
 
             val stringRequest = MyStringRequest(
-            Request.Method.GET, urlWithParams,params,
-            Response.Listener { response ->
-                try {
-                    // Parsear la respuesta JSON a una lista de objetos Event
-                    val gson = Gson()
-                    Log.d("adios",response)
-                    val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
+                Request.Method.GET, urlWithParams, params,
+                Response.Listener { response ->
+                    try {
+                        if (response == "No se encontraron eventos.") {
+                            noEventsTextView.visibility = View.VISIBLE
+                        } else {
+                            // Limpiar la lista de eventos antes de agregar nuevos eventos
+                            events.clear()
 
-                    // Manejar la lista de eventos
-                    for (event in eventsArray) {
-                        events.add(event)
-                        Log.d("eventossaved",events.toString())
-                        // Aquí puedes crear objetos Event y hacer lo que necesites con ellos
+                            // Parsear la respuesta JSON a una lista de objetos Event
+                            val gson = Gson()
+                            val eventsArray = gson.fromJson(response.toString(), Array<Event>::class.java)
+
+                            // Manejar la lista de eventos
+                            for (event in eventsArray) {
+                                events.add(event)
+                                Log.d("eventossaved", events.toString())
+                                // Aquí puedes crear objetos Event y hacer lo que necesites con ellos
+                            }
+                            initRecyclerView()
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
                     }
-                    initRecyclerView()
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
+                },
+                Response.ErrorListener { error ->
+                    Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
                 }
-            },
-            Response.ErrorListener { error ->
-                Log.e("Error", "Fallo al hacer la solicitud: ${error.message}")
-            }
-        )
+            )
 
-        // Añadir la solicitud a la cola de solicitudes
-        queue.add(stringRequest)
+            // Añadir la solicitud a la cola de solicitudes
+            queue.add(stringRequest)
         }
     }
+
     private fun initRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         eventBillboardAdapter = EventBillboardAdapter(requireContext(),events,this)
@@ -110,6 +116,9 @@ class SavedFragment : Fragment(), OnEventClickListener {
     }
 
     override fun onEventClick(eventId: Int) {
+    }
+
+    override fun onSaveIconClick(eventId: Int) {
 
         val idUser =sharedPreferences.getString("user_ID","false").toString()
         val params = mapOf(
